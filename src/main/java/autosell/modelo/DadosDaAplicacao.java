@@ -18,6 +18,16 @@ public class DadosDaAplicacao {
         filiais = new LinkedList<>();
         clientes = new LinkedList<>();
         eventos = new LinkedList<>();
+
+        sede = new Sede("Sede AutoSell");
+        filiais.add(new Filial("Filial A"));
+        filiais.add(new Filial("Filial B"));
+        filiais.add(new Filial("Filial C"));
+        filiais.add(new Filial("Filial D"));
+    }
+
+    public LinkedList<Transacao> getTransacoes() {
+        return transacoes;
     }
 
     public LinkedList<Transacao> getTransacoes(int numTransacoes) {
@@ -49,8 +59,9 @@ public class DadosDaAplicacao {
     }
 
     public LinkedList<Local> getLocais() {
-        //TODO
-        return null;
+        LinkedList<Local> locais = new LinkedList<>(filiais);
+        locais.add(sede);
+        return locais;
     }
 
     public LinkedList<Local> getLocaisComStockDe(String nomePeca) {
@@ -89,6 +100,7 @@ public class DadosDaAplicacao {
 
     public void addTransacao(Transacao transacao){
         //TODO
+
         transacoes.sort(new Comparator<Transacao>() {
             @Override
             public int compare(Transacao o1, Transacao o2) {
