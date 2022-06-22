@@ -99,8 +99,11 @@ public class DadosDaAplicacao {
     }
 
     public void addTransacao(Transacao transacao){
-        //TODO
+        if (transacao == null){
+            return;
+        }
 
+        transacoes.add(transacao);
         transacoes.sort(new Comparator<Transacao>() {
             @Override
             public int compare(Transacao o1, Transacao o2) {
