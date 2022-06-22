@@ -1,5 +1,6 @@
 package autosell.modelo;
 
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.ListIterator;
 
@@ -88,6 +89,12 @@ public class DadosDaAplicacao {
 
     public void addTransacao(Transacao transacao){
         //TODO
+        transacoes.sort(new Comparator<Transacao>() {
+            @Override
+            public int compare(Transacao o1, Transacao o2) {
+                return o1.getData().compareTo(o2.getData());
+            }
+        });
     }
 
     public void setSede(Sede sede) {
