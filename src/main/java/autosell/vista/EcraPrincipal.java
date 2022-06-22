@@ -2,6 +2,7 @@ package autosell.vista;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Date;
 
 public class EcraPrincipal extends JFrame{
@@ -15,7 +16,7 @@ public class EcraPrincipal extends JFrame{
     private JButton btnAdicionarVeiculo;
     private JButton btnVerLocaisRegistados;
     private JButton btnVerPecasRegistadas;
-    private JButton btnVerDetalhesCliente;
+    private JButton btnVerTodosClientes;
 
     public EcraPrincipal() {
         super("Ecra Principal");
@@ -25,6 +26,7 @@ public class EcraPrincipal extends JFrame{
 
         new Timer(500, this::updateDate).start();
         btnRegistarTransacao.addActionListener(this::btnRegistarTransacaoActionPerformed);
+        btnVerTodosClientes.addActionListener(this::btnVerTodosClientesActionPerformed);
     }
 
     private void updateDate(ActionEvent actionEvent) {
@@ -41,6 +43,12 @@ public class EcraPrincipal extends JFrame{
     public void btnRegistarTransacaoActionPerformed(ActionEvent actionEvent) {
         EcraRegistarTransacao ecraRegistarTransacao = new EcraRegistarTransacao();
         ecraRegistarTransacao.setVisible(true);
+    }
+
+    public void btnVerTodosClientesActionPerformed(ActionEvent actionEvent) {
+        EcraVerTodosClientes ecraVerTodosClientes = new EcraVerTodosClientes(this, true);
+        ecraVerTodosClientes.setLocationRelativeTo(this);
+        ecraVerTodosClientes.setVisible(true);
     }
 
 }
