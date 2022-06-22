@@ -36,6 +36,6 @@ public class Data {
     }
 
     public int compareTo(Data o1){
-        return calendar.compareTo(o1.calendar);
+        return -calendar.compareTo(o1.calendar);
     }
 }
