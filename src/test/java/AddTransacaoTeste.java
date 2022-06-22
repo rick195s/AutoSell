@@ -7,7 +7,7 @@ public class AddTransacaoTeste {
     @Test
     public void TesteTransacoesOrdenadas(){
         Cliente cliente = new Cliente("Ricardo", 21321311);
-        Veiculo veiculo = new Veiculo("M1", "AD-Dw-12", "BMW");
+        Veiculo veiculo = new Veiculo("M1", "AD-Dw-12", "BMW", 299);
         Local local = DadosDaAplicacao.INSTANCE.getLocais().getFirst();
 
         Transacao transacao1 = new Transacao(
@@ -32,14 +32,14 @@ public class AddTransacaoTeste {
     @Test
     public void TesteTransacaoAdicionada(){
         Cliente cliente = new Cliente("Ricardo", 21321311);
-        Veiculo veiculo = new Veiculo("M1", "AD-Dw-12", "BMW");
+        Veiculo veiculo = new Veiculo("M1", "AD-Dw-12", "BMW", 299);
         Local local = DadosDaAplicacao.INSTANCE.getLocais().getFirst();
 
         Transacao transacao1 = new Transacao(
                 Data.parseData("12/03/2001"),
                 cliente,
                 veiculo,
-                local,
+                local
                 );
 
         DadosDaAplicacao.INSTANCE.addTransacao(transacao1);
@@ -51,7 +51,7 @@ public class AddTransacaoTeste {
     @Test
     public void TesteInformacaoTransacao(){
         Cliente cliente = new Cliente("Ricardo", 21321311);
-        Veiculo veiculo = new Veiculo("M1", "AD-Dw-12", "BMW");
+        Veiculo veiculo = new Veiculo("M1", "AD-Dw-12", "BMW", 299);
         Local local = DadosDaAplicacao.INSTANCE.getLocais().getFirst();
 
         Transacao transacao1 = new Transacao(

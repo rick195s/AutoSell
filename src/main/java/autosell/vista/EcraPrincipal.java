@@ -7,7 +7,7 @@ import java.util.Date;
 public class EcraPrincipal extends JFrame{
     private JPanel panel1;
     private JList list1;
-    private JButton btnRegistar;
+    private JButton btnRegistarTransacao;
     private JButton btnEstatisticas;
     private JLabel dateLabel;
     private JButton btnAdicionarEvento;
@@ -24,8 +24,7 @@ public class EcraPrincipal extends JFrame{
         pack();
 
         new Timer(500, this::updateDate).start();
-        btnRegistar.addActionListener(this::btnRegistarActionPerformed);
-
+        btnRegistarTransacao.addActionListener(this::btnRegistarTransacaoActionPerformed);
     }
 
     private void updateDate(ActionEvent actionEvent) {
@@ -39,7 +38,7 @@ public class EcraPrincipal extends JFrame{
         new EcraPrincipal().setVisible(true);
     }
 
-    public void btnRegistarActionPerformed(ActionEvent actionEvent) {
+    public void btnRegistarTransacaoActionPerformed(ActionEvent actionEvent) {
         EcraRegistarTransacao ecraRegistarTransacao = new EcraRegistarTransacao();
         ecraRegistarTransacao.setVisible(true);
     }
