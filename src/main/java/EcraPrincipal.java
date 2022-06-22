@@ -1,16 +1,20 @@
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Date;
 
 public class EcraPrincipal extends JFrame{
     private JPanel panel1;
     private JList list1;
-    private JButton btnAdicionar;
     private JButton btnRegistar;
     private JButton btnEstatisticas;
-    private JButton btnConsultar;
     private JLabel dateLabel;
+    private JButton btnAdicionarEvento;
+    private JButton btnAdicionarPeca;
+    private JButton btnAdicionarVeiculo;
+    private JButton btnVerLocaisRegistados;
+    private JButton btnVerPecasRegistadas;
+    private JButton btnVerDetalhesCliente;
 
     public EcraPrincipal() {
         super("Ecra Principal");
@@ -35,7 +39,8 @@ public class EcraPrincipal extends JFrame{
     }
 
     public void btnRegistarActionPerformed(ActionEvent actionEvent) {
-
+        EcraRegistarTransacao ecraRegistarTransacao = new EcraRegistarTransacao();
+        ecraRegistarTransacao.setVisible(true);
     }
 
 }
