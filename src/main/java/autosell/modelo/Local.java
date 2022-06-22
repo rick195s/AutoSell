@@ -40,4 +40,8 @@ public class Local {
         pecas.add(peca);
     }
 
+    @Override
+    public String toString() {
+        return nome;
+    }
 }
