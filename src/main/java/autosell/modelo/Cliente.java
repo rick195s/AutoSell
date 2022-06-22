@@ -16,4 +16,10 @@ public class Cliente {
     public double getNIF() {
         return NIF;
     }
+
+    @Override
+    public String toString() {
+
+        return nome + " - " + NIF;
+    }
 }
