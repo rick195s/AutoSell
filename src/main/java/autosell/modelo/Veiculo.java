@@ -5,11 +5,13 @@ public class Veiculo {
     private String nome;
     private String matricula;
     private String marca;
+    private double valor;
 
-    public Veiculo(String nome, String matricula, String marca) {
+    public Veiculo(String nome, String matricula, String marca, double valor) {
         this.nome = nome;
         this.matricula = matricula;
         this.marca = marca;
+        this.valor = valor;
     }
 
     public String getNome() {
@@ -22,5 +24,9 @@ public class Veiculo {
 
     public String getMarca() {
         return marca;
+    }
+
+    public double getValor() {
+        return valor;
     }
 }
