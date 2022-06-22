@@ -46,9 +46,8 @@ public class EcraPrincipal extends JFrame{
     }
 
     public void btnVerTodosClientesActionPerformed(ActionEvent actionEvent) {
-        EcraVerTodosClientes ecraVerTodosClientes = new EcraVerTodosClientes();
-        ecraVerTodosClientes.setLocationRelativeTo(this);
-        ecraVerTodosClientes.setVisible(true);
+        EcraVerTodosClientes ecraVerTodosClientes = new EcraVerTodosClientes(this);
+
     }
 
 }
