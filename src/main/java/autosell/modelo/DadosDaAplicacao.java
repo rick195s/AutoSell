@@ -31,16 +31,16 @@ public class DadosDaAplicacao {
     }
 
     public LinkedList<Transacao> getTransacoes(int numTransacoes) {
-        //TODO
-        /*ListIterator<Transacao> transacaoListIterator = transacoes.listIterator();
+
+        ListIterator<Transacao> transacaoListIterator = transacoes.listIterator();
         LinkedList<Transacao> listaTransacoes = new LinkedList<>();
 
         while (transacaoListIterator.hasNext() && transacaoListIterator.nextIndex() < numTransacoes) {
             listaTransacoes.add(transacaoListIterator.next());
         }
 
-        return listaTransacoes;*/
-        return null;
+        return listaTransacoes;
+
     }
 
     public LinkedList<Transacao> getTransacoesDe(Cliente cliente){
