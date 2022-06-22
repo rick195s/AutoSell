@@ -2,7 +2,6 @@ package autosell.vista;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Date;
 
 public class EcraPrincipal extends JFrame{
@@ -46,7 +45,7 @@ public class EcraPrincipal extends JFrame{
     }
 
     public void btnVerTodosClientesActionPerformed(ActionEvent actionEvent) {
-        EcraVerTodosClientes ecraVerTodosClientes = new EcraVerTodosClientes(this);
+        EcraVerTodosClientes.mostrarTodosClientes(this);
 
     }
 

@@ -13,12 +13,10 @@ public class EcraVerTodosClientes extends JFrame {
     private JPanel panel1;
     private DefaultListModel modeloTodosClientes;
 
-    public EcraVerTodosClientes(Frame parent) {
+    public EcraVerTodosClientes() {
         setTitle("Todos os Clientes Registados");
         setContentPane(panel1);
         pack();
-        setLocationRelativeTo(parent);
-        setVisible(true);
 
         initComponentes();
         DadosDaAplicacao.INSTANCE.addCliente(new Cliente("dwqdwdwq", 12312321));
@@ -30,6 +28,12 @@ public class EcraVerTodosClientes extends JFrame {
                lstMouseClickActionPerformed(evt);
             }
         });
+    }
+
+    public static void mostrarTodosClientes(Frame parent){
+        EcraVerTodosClientes ecraVerTodosClientes = new EcraVerTodosClientes();
+        ecraVerTodosClientes.setLocationRelativeTo(parent);
+        ecraVerTodosClientes.setVisible(true);
     }
 
     public void initComponentes(){
