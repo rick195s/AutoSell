@@ -5,6 +5,7 @@ import autosell.modelo.DadosDaAplicacao;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
 public class EcraVerTodosClientes extends JFrame {
 
@@ -21,8 +22,14 @@ public class EcraVerTodosClientes extends JFrame {
 
         initComponentes();
         DadosDaAplicacao.INSTANCE.addCliente(new Cliente("dwqdwdwq", 12312321));
+        DadosDaAplicacao.INSTANCE.addCliente(new Cliente("dwqdwdwq", 12312321));
         atualizarTodosClientes();
 
+        lstTodosClientes.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+               lstMouseClickActionPerformed(evt);
+            }
+        });
     }
 
     public void initComponentes(){
@@ -35,6 +42,15 @@ public class EcraVerTodosClientes extends JFrame {
         modeloTodosClientes.removeAllElements();
         for (Cliente cliente : DadosDaAplicacao.INSTANCE.getClientes()) {
             modeloTodosClientes.addElement(cliente);
+
+        }
+    }
+
+    public void lstMouseClickActionPerformed(MouseEvent evt){
+        JList list = (JList)evt.getSource();
+        if (evt.getClickCount() == 2) {
+            Cliente cliente = (Cliente) list.getSelectedValue();
+            System.out.println(cliente.getNome());
 
         }
     }
