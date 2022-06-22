@@ -7,12 +7,12 @@ public class Transacao {
     private Local local;
     private double valor;
 
-    public Transacao(Data data, Cliente cliente, Veiculo veiculo, Local local, double valor) {
+    public Transacao(Data data, Cliente cliente, Veiculo veiculo, Local local) {
         this.data = data;
         this.cliente = cliente;
         this.veiculo = veiculo;
         this.local = local;
-        this.valor = valor;
+        this.valor = veiculo.getValor();
     }
 
     public Data getData() {

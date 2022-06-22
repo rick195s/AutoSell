@@ -39,7 +39,8 @@ public class AddTransacaoTeste {
                 Data.parseData("12/03/2001"),
                 cliente,
                 veiculo,
-                local);
+                local,
+                );
 
         DadosDaAplicacao.INSTANCE.addTransacao(transacao1);
 
