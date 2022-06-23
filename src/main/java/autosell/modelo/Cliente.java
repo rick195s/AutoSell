@@ -2,9 +2,9 @@ package autosell.modelo;
 
 public class Cliente {
     private String nome;
-    private double NIF;
+    private String NIF;
 
-    public Cliente(String nome, double NIF) {
+    public Cliente(String nome, String NIF) {
         this.nome = nome;
         this.NIF = NIF;
     }
@@ -13,7 +13,7 @@ public class Cliente {
         return nome;
     }
 
-    public double getNIF() {
+    public String getNIF() {
         return NIF;
     }
 
@@ -24,6 +24,6 @@ public class Cliente {
     }
 
     public int compareTo(Cliente cliente){
-        return Double.compare(NIF, cliente.getNIF());
+        return NIF.compareTo(cliente.getNIF());
     }
 }
