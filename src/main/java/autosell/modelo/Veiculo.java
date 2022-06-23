@@ -29,4 +29,8 @@ public class Veiculo {
     public double getValor() {
         return valor;
     }
+    @Override
+    public String toString() {
+        return nome+" - "+matricula+" - "+ marca + " - " + valor +" €";
+    }
 }
