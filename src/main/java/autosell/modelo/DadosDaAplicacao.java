@@ -30,6 +30,8 @@ public class DadosDaAplicacao {
         Veiculo veiculo = new Veiculo("M1", "AD-Dw-12", "BMW", 299);
         Local local = getLocais().getFirst();
 
+        local.addVeiculo(veiculo);
+
         clientes.add(cliente);
         clientes.add(cliente2);
 
