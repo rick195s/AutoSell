@@ -9,6 +9,8 @@ public class Local {
 
     protected Local(String nome) {
         this.nome = nome;
+        veiculos = new LinkedList<>();
+        pecas = new LinkedList<>();
     }
 
     public boolean pecaEmStock(String nome){
