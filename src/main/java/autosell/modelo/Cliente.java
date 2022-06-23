@@ -22,4 +22,8 @@ public class Cliente {
 
         return nome + " - " + NIF;
     }
+
+    public int compareTo(Cliente cliente){
+        return Double.compare(NIF, cliente.getNIF());
+    }
 }
