@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 public class AddTransacaoTeste {
     @Test
     public void TesteTransacoesOrdenadas(){
-        Cliente cliente = new Cliente("Ricardo", 21321311);
+        Cliente cliente = new Cliente("Ricardo", "21321311");
         Veiculo veiculo = new Veiculo("M1", "AD-Dw-12", "BMW", 299);
         Local local = DadosDaAplicacao.INSTANCE.getLocais().getFirst();
 
@@ -31,7 +31,7 @@ public class AddTransacaoTeste {
 
     @Test
     public void TesteTransacaoAdicionada(){
-        Cliente cliente = new Cliente("Ricardo", 21321311);
+        Cliente cliente = new Cliente("Ricardo", "21321311");
         Veiculo veiculo = new Veiculo("M1", "AD-Dw-12", "BMW", 299);
         Local local = DadosDaAplicacao.INSTANCE.getLocais().getFirst();
 
@@ -50,7 +50,7 @@ public class AddTransacaoTeste {
 
     @Test
     public void TesteInformacaoTransacao(){
-        Cliente cliente = new Cliente("Ricardo", 21321311);
+        Cliente cliente = new Cliente("Ricardo", "21321311");
         Veiculo veiculo = new Veiculo("M1", "AD-Dw-12", "BMW", 299);
         Local local = DadosDaAplicacao.INSTANCE.getLocais().getFirst();
 

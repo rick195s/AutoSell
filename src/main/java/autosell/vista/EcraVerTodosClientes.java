@@ -9,9 +9,9 @@ import java.awt.event.*;
 
 public class EcraVerTodosClientes extends JFrame {
 
-    private JList lstTodosClientes;
+    private JList<Cliente> lstTodosClientes;
     private JPanel panel1;
-    private DefaultListModel modeloTodosClientes;
+    private DefaultListModel<Cliente> modeloTodosClientes;
 
     public EcraVerTodosClientes() {
         setTitle("Todos os Clientes Registados");
@@ -19,9 +19,7 @@ public class EcraVerTodosClientes extends JFrame {
         pack();
 
         initComponentes();
-        DadosDaAplicacao.INSTANCE.addCliente(new Cliente("dwqdwdwq", 12312321));
-        DadosDaAplicacao.INSTANCE.addCliente(new Cliente("dwqdwdwq", 12312321));
-        atualizarTodosClientes();
+       atualizarTodosClientes();
 
         lstTodosClientes.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
@@ -37,7 +35,7 @@ public class EcraVerTodosClientes extends JFrame {
     }
 
     public void initComponentes(){
-        modeloTodosClientes = new DefaultListModel();
+        modeloTodosClientes = new DefaultListModel<>();
         lstTodosClientes.setModel(modeloTodosClientes);
 
     }

@@ -8,11 +8,10 @@ import javax.swing.*;
 import java.awt.*;
 
 public class EcraVerDetalhesCliente extends JDialog{
-    private JList lstTransacoesCliente;
+    private JList<Transacao> lstTransacoesCliente;
     private JLabel txtNome;
     private JLabel txtNIF;
     private JPanel panel1;
-    private JList lstTrasacoesCliente;
     private DefaultListModel<Transacao> modeloTransacoesCliente;
 
     public EcraVerDetalhesCliente(Frame parent, boolean modal, Cliente cliente) {
@@ -23,14 +22,13 @@ public class EcraVerDetalhesCliente extends JDialog{
 
         initComponentes();
         txtNome.setText(cliente.getNome());
-        txtNIF.setText(Double.toString(cliente.getNIF()));
+        txtNIF.setText(cliente.getNIF());
         atualizarTransacoes(cliente);
 
     }
 
     public void initComponentes(){
-        modeloTransacoesCliente = new DefaultListModel();
-        lstTransacoesCliente = new JList();
+        modeloTransacoesCliente = new DefaultListModel<>();
         lstTransacoesCliente.setModel(modeloTransacoesCliente);
     }
 

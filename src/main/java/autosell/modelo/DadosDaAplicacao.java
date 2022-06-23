@@ -24,6 +24,21 @@ public class DadosDaAplicacao {
         filiais.add(new Filial("Filial B"));
         filiais.add(new Filial("Filial C"));
         filiais.add(new Filial("Filial D"));
+
+        Cliente cliente = new Cliente("Ricardo", "21321311");
+        Cliente cliente2 = new Cliente("Ricardo", "21321312");
+        Veiculo veiculo = new Veiculo("M1", "AD-Dw-12", "BMW", 299);
+        Local local = getLocais().getFirst();
+
+        clientes.add(cliente);
+        clientes.add(cliente2);
+
+        transacoes.add(new Transacao(
+                Data.parseData("12/03/2001"),
+                cliente,
+                veiculo,
+                local)
+        );
     }
 
     public LinkedList<Transacao> getTransacoes() {
@@ -44,7 +59,6 @@ public class DadosDaAplicacao {
     }
 
     public LinkedList<Transacao> getTransacoesDe(Cliente cliente){
-        //TODO
         if (cliente == null){
             return null;
         }
