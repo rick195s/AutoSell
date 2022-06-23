@@ -49,10 +49,13 @@ public class EcraVerTodosClientes extends JFrame {
     }
 
     public void lstMouseClickActionPerformed(MouseEvent evt){
-        if (evt.getClickCount() == 2) {
-            Cliente cliente = (Cliente) lstTodosClientes.getSelectedValue();
-            EcraVerDetalhesCliente.mostrarDetalhesCliente(this, cliente);
-
+        int botao = evt.getButton();
+        if (botao == MouseEvent.BUTTON1){
+            int clickCount = evt.getClickCount();
+            if( clickCount == 2) {
+                Cliente cliente = (Cliente) lstTodosClientes.getSelectedValue();
+                EcraVerDetalhesCliente.mostrarDetalhesCliente(this, cliente);
+            }
         }
     }
 

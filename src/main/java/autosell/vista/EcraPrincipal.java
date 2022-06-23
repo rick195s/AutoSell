@@ -58,7 +58,7 @@ public class EcraPrincipal extends JFrame{
         new EcraPrincipal().setVisible(true);
     }
 
-    public void btnRegistarTransacaoActionPerformed(ActionEvent actionEvent) {
+    public void btnRegistarTransacaoActionPerformed(ActionEvent evt) {
         Transacao transacao = EcraRegistarTransacao.mostrarCriacaoTransacao(this);
         if (transacao != null){
             DadosDaAplicacao.INSTANCE.addTransacao(transacao);
@@ -66,7 +66,7 @@ public class EcraPrincipal extends JFrame{
         }
     }
 
-    public void btnVerTodosClientesActionPerformed(ActionEvent actionEvent) {
+    public void btnVerTodosClientesActionPerformed(ActionEvent evt) {
         EcraVerTodosClientes.mostrarTodosClientes(this);
 
     }
