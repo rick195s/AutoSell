@@ -1,12 +1,16 @@
 package autosell.vista;
 
+import autosell.modelo.DadosDaAplicacao;
+import autosell.modelo.Transacao;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.util.Date;
 
 public class EcraPrincipal extends JFrame{
     private JPanel panel1;
-    private JList list1;
+    private JList<Transacao> lstUltimasTransacoes;
+    private DefaultListModel<Transacao> modeloUltimasTransacoes;
     private JButton btnRegistarTransacao;
     private JButton btnEstatisticas;
     private JLabel dateLabel;
@@ -23,16 +27,31 @@ public class EcraPrincipal extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();
 
+        initComponentes();
+        atualizarUltimasTransacoes();
+    }
+
+    private void initComponentes(){
         new Timer(500, this::updateDate).start();
         btnRegistarTransacao.addActionListener(this::btnRegistarTransacaoActionPerformed);
         btnVerTodosClientes.addActionListener(this::btnVerTodosClientesActionPerformed);
+
+        modeloUltimasTransacoes = new DefaultListModel<>();
+        lstUltimasTransacoes.setModel(modeloUltimasTransacoes);
+    }
+
+    private void atualizarUltimasTransacoes(){
+        modeloUltimasTransacoes.removeAllElements();
+        for (Transacao transacao : DadosDaAplicacao.INSTANCE.getTransacoes(15)) {
+            modeloUltimasTransacoes.addElement(transacao);
+        }
+
     }
 
     private void updateDate(ActionEvent actionEvent) {
         Date date = new Date();
         dateLabel.setText(date.toString());
     }
-
 
     public static void main(String[] args) {
 
