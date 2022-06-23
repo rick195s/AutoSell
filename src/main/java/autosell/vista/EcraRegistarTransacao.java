@@ -50,6 +50,7 @@ public class EcraRegistarTransacao extends JDialog {
 
         comboLocal.addActionListener(this::comoboLocalActionPerformed);
         btnRegistar.addActionListener(this::btnRegistarActionPerformed);
+        btnCancelar.addActionListener(this::btnCancelarActionPerformed);
     }
 
     public void atualizarClientes(){
@@ -96,6 +97,10 @@ public class EcraRegistarTransacao extends JDialog {
         }
 
         transacao = new Transacao(new Data(), cliente, veiculo, local);
+        fechar();
+    }
+
+    public void btnCancelarActionPerformed(ActionEvent evt) {
         fechar();
     }
 
