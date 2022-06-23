@@ -45,8 +45,17 @@ public class DadosDaAplicacao {
 
     public LinkedList<Transacao> getTransacoesDe(Cliente cliente){
         //TODO
+        if (cliente == null){
+            return null;
+        }
 
-        return null;
+        LinkedList<Transacao> transacoesCliente = new LinkedList<>();
+        for (Transacao transacao : transacoes) {
+            if (transacao.getCliente().compareTo(cliente) == 0){
+                transacoesCliente.add(transacao);
+            }
+        }
+        return transacoesCliente;
     }
 
     public LinkedList<Cliente> getClientes() {
