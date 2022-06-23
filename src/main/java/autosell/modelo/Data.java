@@ -7,6 +7,10 @@ import java.util.GregorianCalendar;
 public class Data {
     private Calendar calendar;
 
+    public Data(){
+        this.calendar = new GregorianCalendar();
+    }
+
     public Data(int dia, int mes, int ano) {
         this.calendar = new GregorianCalendar(ano, mes - 1, dia);
     }
