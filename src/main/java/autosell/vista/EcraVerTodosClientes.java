@@ -54,7 +54,7 @@ public class EcraVerTodosClientes extends JFrame {
         JList list = (JList)evt.getSource();
         if (evt.getClickCount() == 2) {
             Cliente cliente = (Cliente) list.getSelectedValue();
-            System.out.println(cliente.getNome());
+            EcraVerDetalhesCliente.mostrarDetalhesCliente(this, cliente);
 
         }
     }
