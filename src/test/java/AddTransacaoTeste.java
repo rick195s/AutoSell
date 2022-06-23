@@ -64,9 +64,9 @@ public class AddTransacaoTeste {
 
         Transacao transacaoObtida = DadosDaAplicacao.INSTANCE.getTransacoes().getFirst();
         assertEquals(0, transacaoObtida.getData().compareTo(Data.parseData("12/03/2001")) );
-        assertEquals( cliente,transacaoObtida.getCliente());
+        assertEquals( 0,transacaoObtida.getCliente().compareTo(cliente));
         assertEquals(local,transacaoObtida.getLocal());
-        assertEquals( veiculo, transacaoObtida.getVeiculo());
+        assertEquals( veiculo.getMatricula(), transacaoObtida.getVeiculo().getMatricula());
 
     }
 
