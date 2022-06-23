@@ -19,7 +19,7 @@ public class EcraVerTodosClientes extends JFrame {
         pack();
 
         initComponentes();
-       atualizarTodosClientes();
+        atualizarTodosClientes();
 
         lstTodosClientes.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
@@ -49,9 +49,8 @@ public class EcraVerTodosClientes extends JFrame {
     }
 
     public void lstMouseClickActionPerformed(MouseEvent evt){
-        JList list = (JList)evt.getSource();
         if (evt.getClickCount() == 2) {
-            Cliente cliente = (Cliente) list.getSelectedValue();
+            Cliente cliente = (Cliente) lstTodosClientes.getSelectedValue();
             EcraVerDetalhesCliente.mostrarDetalhesCliente(this, cliente);
 
         }
