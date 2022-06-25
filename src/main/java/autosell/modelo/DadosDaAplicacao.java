@@ -28,6 +28,7 @@ public class DadosDaAplicacao {
         Cliente cliente = new Cliente("Ricardo", "21321311");
         Cliente cliente2 = new Cliente("Ricardo", "21321312");
         Veiculo veiculo = new Veiculo("M1", "AD-Dw-12", "BMW", 299);
+        Veiculo veiculo2 = new Veiculo("e1", "EW-31-TG", "BMW", 500);
         Local local = getLocais().getFirst();
         Local local2 = getLocais().getLast();
 
@@ -42,7 +43,7 @@ public class DadosDaAplicacao {
         local2.addPeca(pneu2);
 
         local.addVeiculo(veiculo);
-        getLocais().get(2).addVeiculo(veiculo);
+        getLocais().get(2).addVeiculo(veiculo2);
 
         clientes.add(cliente);
         clientes.add(cliente2);

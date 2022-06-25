@@ -28,4 +28,28 @@ public class Estatisticas {
 
         return filialMaisVende;
     }
+
+    public static Filial getFilialMaisProfit(){
+        HashMap<Filial, Double> hashMap = new HashMap<>();
+
+        Filial filialMaisProfit = new Filial("");
+
+        for (Transacao transacao : DadosDaAplicacao.INSTANCE.getTransacoes()) {
+            Local local = transacao.getLocal();
+            if (local instanceof Filial){
+
+                Double profit = hashMap.getOrDefault(local, 0.0);
+
+                hashMap.put((Filial) local, profit + transacao.getValor());
+
+                if (hashMap.getOrDefault(filialMaisProfit,0.0) < profit + transacao.getValor()) {
+                    filialMaisProfit = (Filial) local;
+                }
+
+
+            }
+        }
+
+        return filialMaisProfit;
+    }
 }
