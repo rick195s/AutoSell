@@ -46,4 +46,10 @@ public class Local {
     public String toString() {
         return nome;
     }
+
+    public void removePeca(Peca peca) {
+        if (peca != null) {
+            pecas.remove(peca);
+        }
+    }
 }

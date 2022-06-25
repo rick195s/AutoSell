@@ -10,4 +10,9 @@ public class Peca {
     public String getNome() {
         return nome;
     }
+
+    @Override
+    public String toString() {
+        return nome;
+    }
 }
