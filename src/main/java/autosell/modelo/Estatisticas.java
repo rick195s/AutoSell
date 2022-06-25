@@ -64,4 +64,10 @@ public class Estatisticas {
 
         return profit;
     }
+
+
+    public static int getNumCarrosVendidos(){
+        return DadosDaAplicacao.INSTANCE.getTransacoes().size();
+
+    }
 }
