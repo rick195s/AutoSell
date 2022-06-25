@@ -84,4 +84,14 @@ public class Estatisticas {
 
         return numPneus;
     }
+
+    public static int getNumCarrosStock() {
+        int numCarrosStock = 0;
+
+        for (Local local : DadosDaAplicacao.INSTANCE.getLocais()) {
+            numCarrosStock+=local.getVeiculos().size();
+        }
+
+        return numCarrosStock;
+    }
 }

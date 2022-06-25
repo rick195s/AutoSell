@@ -29,7 +29,7 @@ public class EcraEstatisticas extends JDialog{
         labelProfitSede.setText(Estatisticas.profitSede()+" €");
         labelNumCarrosVendidos.setText(Estatisticas.getNumCarrosVendidos()+"");
         labelNumPneusStock.setText(Estatisticas.getNumPneusStock()+"");
-
+        labelNumCarrosStock.setText(Estatisticas.getNumCarrosStock() + "");
     }
 
     public static void mostrarEstatisticas(Frame parent){
