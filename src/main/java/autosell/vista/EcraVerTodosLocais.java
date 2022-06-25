@@ -8,7 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class EcraVerTodosLocais extends JFrame{
-    private JList listTodosLocais;
+    private JList<Local> listTodosLocais;
     private JPanel panelLocais;
     private JComboBox cbTipoLocal; //TODO - selecionar tipo de local -
     private DefaultListModel<Local> modeloTodosLocais;

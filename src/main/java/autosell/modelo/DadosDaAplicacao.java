@@ -29,6 +29,17 @@ public class DadosDaAplicacao {
         Cliente cliente2 = new Cliente("Ricardo", "21321312");
         Veiculo veiculo = new Veiculo("M1", "AD-Dw-12", "BMW", 299);
         Local local = getLocais().getFirst();
+        Local local2 = getLocais().getLast();
+
+        Oleo oleo1 = new Oleo("wd40");
+        Oleo oleo2 = new Oleo("wd50");
+        Pneu pneu1 = new Pneu("Continental");
+        Pneu pneu2 = new Pneu("Michelin");
+
+        local.addPeca(oleo1);
+        local.addPeca(pneu1);
+        local2.addPeca(oleo2);
+        local2.addPeca(pneu2);
 
         local.addVeiculo(veiculo);
 
@@ -60,14 +71,14 @@ public class DadosDaAplicacao {
 
     }
 
-    public LinkedList<Transacao> getTransacoesDe(Cliente cliente){
-        if (cliente == null){
+    public LinkedList<Transacao> getTransacoesDe(Cliente cliente) {
+        if (cliente == null) {
             return null;
         }
 
         LinkedList<Transacao> transacoesCliente = new LinkedList<>();
         for (Transacao transacao : transacoes) {
-            if (transacao.getCliente().compareTo(cliente) == 0){
+            if (transacao.getCliente().compareTo(cliente) == 0) {
                 transacoesCliente.add(transacao);
             }
         }
@@ -99,32 +110,43 @@ public class DadosDaAplicacao {
         return null;
     }
 
-    public void addCliente(Cliente cliente){
-        if (cliente == null){
+    public void addCliente(Cliente cliente) {
+        if (cliente == null) {
             return;
         }
 
         clientes.add(cliente);
     }
 
-    public void addEvento(Evento evento){
-        if (evento == null){
+    public void addEvento(Evento evento) {
+        if (evento == null) {
             return;
         }
 
         eventos.add(evento);
     }
 
-    public void addVeiculoA(Local local, Veiculo veiculo){
+    public void addVeiculoA(Local local, Veiculo veiculo) {
         //TODO
     }
 
-    public void addPecaA(Local local, Peca peca){
-        //TODO
+    public void addPecaA(Local local, Peca peca) {
+        if (local != null && peca != null) {
+            local.addPeca(peca);
+        }
+        throw new NullPointerException();
     }
 
-    public void addTransacao(Transacao transacao){
-        if (transacao == null){
+    public void removePecaA(Local local, Peca peca) {
+        if (local != null && peca != null) {
+            local.removePeca(peca);
+        }
+        throw new NullPointerException();
+    }
+
+
+    public void addTransacao(Transacao transacao) {
+        if (transacao == null) {
             return;
         }
 
@@ -138,18 +160,21 @@ public class DadosDaAplicacao {
     }
 
     public void setSede(Sede sede) {
-        if (sede == null){
+        if (sede == null) {
             return;
         }
 
         this.sede = sede;
     }
 
-    public void addFilial(Filial filial){
-        if (filial == null){
+    public void addFilial(Filial filial) {
+        if (filial == null) {
             return;
         }
 
         filiais.add(filial);
+    }
+
+    public void removePecaA() {
     }
 }
