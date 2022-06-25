@@ -5,6 +5,7 @@ import autosell.modelo.Transacao;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Date;
 
 public class EcraPrincipal extends JFrame{
@@ -36,6 +37,9 @@ public class EcraPrincipal extends JFrame{
         new Timer(500, this::updateDate).start();
         btnRegistarTransacao.addActionListener(this::btnRegistarTransacaoActionPerformed);
         btnVerTodosClientes.addActionListener(this::btnVerTodosClientesActionPerformed);
+        btnVerLocaisRegistados.addActionListener(this::btnVerTodosLocaisActionPerformed);
+        btnEstatisticas.addActionListener(this::btnEstatisticasActionPerformed);
+        btnAdicionarPeca.addActionListener(this::btnAdicionarPecaActionPerformed);
 
         modeloUltimasTransacoes = new DefaultListModel<>();
         lstUltimasTransacoes.setModel(modeloUltimasTransacoes);
@@ -72,4 +76,15 @@ public class EcraPrincipal extends JFrame{
 
     }
 
+    public void btnVerTodosLocaisActionPerformed(ActionEvent evt) {
+        EcraVerTodosLocais.mostrarTodosLocais(this);
+    }
+
+    public void btnEstatisticasActionPerformed(ActionEvent evt) {
+        EcraEstatisticas.mostrarEstatisticas(this);
+    }
+
+    public void btnAdicionarPecaActionPerformed(ActionEvent evt) {
+        EcraAdicionarPeca.adicionarPeca(this);
+    }
 }

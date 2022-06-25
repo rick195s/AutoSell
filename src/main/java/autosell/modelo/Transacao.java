@@ -31,6 +31,10 @@ public class Transacao {
         return local;
     }
 
+    public double getValor() {
+        return valor;
+    }
+
     @Override
     public String toString() {
         return valor + "€ - " + data.toString();

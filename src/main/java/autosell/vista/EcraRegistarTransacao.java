@@ -37,7 +37,11 @@ public class EcraRegistarTransacao extends JDialog {
         ecraRegistarTransacao.setLocationRelativeTo(parent);
         ecraRegistarTransacao.setVisible(true);
 
-        return ecraRegistarTransacao.transacao;
+        return ecraRegistarTransacao.getTransacao();
+    }
+
+    private Transacao getTransacao() {
+        return transacao;
     }
 
     public void initComponentes(){
@@ -49,8 +53,9 @@ public class EcraRegistarTransacao extends JDialog {
         comboVeiculo.setModel(modalVeiculos);
 
         comboLocal.addActionListener(this::comoboLocalActionPerformed);
-        btnRegistar.addActionListener(this::btnRegistarActionPerformed);
+        btnRegistar.addActionListener(this::btnRegistarTransacaoActionPerformed);
         btnCancelar.addActionListener(this::btnCancelarActionPerformed);
+        btnCriarCliente.addActionListener(this::btnCriarClienteActionPerformed);
     }
 
     public void atualizarClientes(){
@@ -82,7 +87,7 @@ public class EcraRegistarTransacao extends JDialog {
         }
     }
 
-    public void btnRegistarActionPerformed(ActionEvent evt){
+    public void btnRegistarTransacaoActionPerformed(ActionEvent evt){
         Cliente cliente = (Cliente) comboCliente.getSelectedItem();
         if (cliente == null){
             return;
@@ -102,6 +107,15 @@ public class EcraRegistarTransacao extends JDialog {
 
     public void btnCancelarActionPerformed(ActionEvent evt) {
         fechar();
+    }
+
+    public void btnCriarClienteActionPerformed(ActionEvent evt) {
+        Cliente cliente = EcraCriarCliente.mostrarCriacaoCliente(this);
+        if (cliente != null){
+            DadosDaAplicacao.INSTANCE.addCliente(cliente);
+            atualizarClientes();
+        }
+
     }
 
     private void fechar(){
