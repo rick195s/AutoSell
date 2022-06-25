@@ -110,6 +110,11 @@ public class EcraRegistarTransacao extends JDialog {
     }
 
     public void btnCriarClienteActionPerformed(ActionEvent evt) {
+        Cliente cliente = EcraCriarCliente.mostrarCriacaoCliente(this);
+        if (cliente != null){
+            DadosDaAplicacao.INSTANCE.addCliente(cliente);
+            atualizarClientes();
+        }
 
     }
 
