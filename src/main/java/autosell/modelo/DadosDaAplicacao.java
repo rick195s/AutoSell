@@ -78,7 +78,7 @@ public class DadosDaAplicacao {
         return clientes;
     }
 
-    public LinkedList<Cliente> getCliente(String nome) {
+    public LinkedList<Cliente> getCliente(String NIF) {
         //TODO
         return null;
     }
