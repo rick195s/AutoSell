@@ -70,4 +70,18 @@ public class Estatisticas {
         return DadosDaAplicacao.INSTANCE.getTransacoes().size();
 
     }
+
+    public static int getNumPneusStock() {
+        int numPneus = 0;
+
+        for (Local local : DadosDaAplicacao.INSTANCE.getLocais()) {
+            for (Peca peca : local.getPecas()) {
+                if (peca instanceof Pneu){
+                    numPneus++;
+                }
+            }
+        }
+
+        return numPneus;
+    }
 }
