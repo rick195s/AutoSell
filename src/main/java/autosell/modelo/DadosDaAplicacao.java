@@ -42,6 +42,7 @@ public class DadosDaAplicacao {
         local2.addPeca(pneu2);
 
         local.addVeiculo(veiculo);
+        getLocais().get(2).addVeiculo(veiculo);
 
         clientes.add(cliente);
         clientes.add(cliente2);

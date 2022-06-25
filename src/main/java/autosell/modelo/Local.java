@@ -13,6 +13,10 @@ public class Local {
         pecas = new LinkedList<>();
     }
 
+    public String getNome() {
+        return nome;
+    }
+
     public boolean pecaEmStock(String nome){
         //TODO
         return false;
