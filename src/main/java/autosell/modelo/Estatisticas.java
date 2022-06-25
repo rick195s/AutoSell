@@ -52,4 +52,16 @@ public class Estatisticas {
 
         return filialMaisProfit;
     }
+
+    public static double profitSede(){
+        double profit = 0.0;
+
+        for (Transacao transacao : DadosDaAplicacao.INSTANCE.getTransacoes()) {
+            if (transacao.getLocal() == DadosDaAplicacao.INSTANCE.getSede()){
+                profit+=transacao.getValor();
+            }
+        }
+
+        return profit;
+    }
 }

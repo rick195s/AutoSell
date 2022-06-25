@@ -19,7 +19,7 @@ public class DadosDaAplicacao {
         clientes = new LinkedList<>();
         eventos = new LinkedList<>();
 
-        sede = new Sede("Sede AutoSell");
+        setSede(new Sede("Sede AutoSell"));
         filiais.add(new Filial("Filial A"));
         filiais.add(new Filial("Filial B"));
         filiais.add(new Filial("Filial C"));
@@ -42,6 +42,8 @@ public class DadosDaAplicacao {
         local2.addPeca(oleo2);
         local2.addPeca(pneu2);
 
+        sede.addVeiculo(veiculo);
+        sede.addVeiculo(veiculo2);
         local.addVeiculo(veiculo);
         getLocais().get(2).addVeiculo(veiculo2);
 
@@ -54,6 +56,10 @@ public class DadosDaAplicacao {
                 veiculo,
                 local)
         );
+    }
+
+    public Sede getSede() {
+        return sede;
     }
 
     public LinkedList<Transacao> getTransacoes() {

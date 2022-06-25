@@ -26,6 +26,7 @@ public class EcraEstatisticas extends JDialog{
     private void getEstatisticas() {
         labelFilialMaisVende.setText(Estatisticas.getFilialMaisVende().getNome());
         labelFilialMaisProfit.setText(Estatisticas.getFilialMaisProfit().getNome());
+        labelProfitSede.setText(Estatisticas.profitSede()+" €");
 
     }
 
