@@ -16,6 +16,7 @@ public class EcraPrincipal extends JFrame{
     private JLabel dateLabel;
     private JButton btnAdicionarEvento;
     private JButton btnAdicionarPeca;
+
     private JButton btnAdicionarVeiculo;
     private JButton btnVerLocaisRegistados;
     private JButton btnVerPecasRegistadas;
