@@ -7,6 +7,7 @@ import autosell.modelo.Peca;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.util.LinkedList;
 
 public class EcraTransferirPeca extends JFrame {
 
@@ -72,10 +73,11 @@ public class EcraTransferirPeca extends JFrame {
     }
 
 
-    public void atualizarCBLocalAdicionarPeca(Object selectedItem) {
+    public void atualizarCBLocalAdicionarPeca(Local local) {
         modalLocaisCBLocalAdicionarPeca.removeAllElements();
-        modalLocaisCBLocalAdicionarPeca.addAll(DadosDaAplicacao.INSTANCE.getLocais());
-        modalLocaisCBLocalAdicionarPeca.removeElement(selectedItem);
+        LinkedList<Local> locais = DadosDaAplicacao.INSTANCE.getLocais();
+        locais.remove(local);
+        modalLocaisCBLocalAdicionarPeca.addAll(locais);
     }
 
     private void fechar() {
