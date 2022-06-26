@@ -70,6 +70,7 @@ public class EcraPrincipal extends JFrame{
     public void btnRegistarTransacaoActionPerformed(ActionEvent evt) {
         Transacao transacao = EcraRegistarTransacao.mostrarCriacaoTransacao(this);
         if (transacao != null){
+            transacao.getLocal().removeVeiculo(transacao.getVeiculo());
             DadosDaAplicacao.INSTANCE.addTransacao(transacao);
             atualizarUltimasTransacoes();
         }

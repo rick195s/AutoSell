@@ -72,9 +72,9 @@ public class EcraRegistarTransacao extends JDialog {
         }
     }
 
-    public void atualizarVeiculos(Local local){
+    public void atualizarVeiculos(Local localSelecionado){
         modalVeiculos.removeAllElements();
-        for (Veiculo veiculo : local.getVeiculos()) {
+        for (Veiculo veiculo : localSelecionado.getVeiculos()) {
             modalVeiculos.addElement(veiculo);
         }
     }
