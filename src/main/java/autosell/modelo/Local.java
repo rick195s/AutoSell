@@ -14,7 +14,10 @@ public class Local {
     }
 
     public boolean pecaEmStock(String nome){
-        //TODO
+        for (Peca peca : pecas) {
+            if (peca.getNome().equals(nome))
+                return true;
+        }
         return false;
     }
 
