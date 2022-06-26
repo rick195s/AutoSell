@@ -7,6 +7,7 @@ import autosell.modelo.Peca;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.util.LinkedList;
 
 public class EcraTransferirPeca extends JFrame {
 
@@ -21,7 +22,7 @@ public class EcraTransferirPeca extends JFrame {
 //    private DefaultComboBoxModel<Peca> modalPecas;
     private DefaultComboBoxModel<Local> modalLocaisCBLocalAdicionarPeca;
 
-    public EcraTransferirPeca(Frame parent, boolean modal, Peca peca, Local local) {
+    public EcraTransferirPeca(Frame parent, Peca peca, Local local) {
         setTitle("Transferir Peça");
         setContentPane(panelAdicionarPeca);
         pack();
@@ -30,6 +31,7 @@ public class EcraTransferirPeca extends JFrame {
         cbLocalARetirarPeca.setEnabled(false);
 
         initComponentes(peca, local);
+        atualizarCBLocalAdicionarPeca(local);
     }
 
     public void initComponentes(Peca peca, Local local) {
@@ -37,14 +39,14 @@ public class EcraTransferirPeca extends JFrame {
         cbLocalARetirarPeca.addItem(local);
         cbEscolherPeca.addItem(peca);
         cbLocalAAdionarPeca.setModel(modalLocaisCBLocalAdicionarPeca);
-        atualizarCBLocalAdicionarPeca(local);
+
 
         buttonAdicionarPeca.addActionListener(this::btnAdicionarPecaActionPerformed);
         buttonCancelar.addActionListener(this::btnCancelarActionPerformed);
     }
 
     public static void mostrarTransferirPeca(Frame parent, Peca peca, Local local) {
-        EcraTransferirPeca ecraTransferirPeca = new EcraTransferirPeca(parent, true, peca, local);
+        EcraTransferirPeca ecraTransferirPeca = new EcraTransferirPeca(parent, peca, local);
         ecraTransferirPeca.setLocationRelativeTo(parent);
         ecraTransferirPeca.setVisible(true);
     }
@@ -71,10 +73,11 @@ public class EcraTransferirPeca extends JFrame {
     }
 
 
-    public void atualizarCBLocalAdicionarPeca(Object selectedItem) {
+    public void atualizarCBLocalAdicionarPeca(Local local) {
         modalLocaisCBLocalAdicionarPeca.removeAllElements();
-        modalLocaisCBLocalAdicionarPeca.addAll(DadosDaAplicacao.INSTANCE.getLocais());
-        modalLocaisCBLocalAdicionarPeca.removeElement(selectedItem);
+        LinkedList<Local> locais = DadosDaAplicacao.INSTANCE.getLocais();
+        locais.remove(local);
+        modalLocaisCBLocalAdicionarPeca.addAll(locais);
     }
 
     private void fechar() {
