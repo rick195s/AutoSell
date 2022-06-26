@@ -24,16 +24,22 @@ public class DadosDaAplicacao {
         filiais.add(new Filial("Filial B"));
         filiais.add(new Filial("Filial C"));
         filiais.add(new Filial("Filial D"));
+        filiais.add(new Filial("Filial asd"));
+
+
 
         Cliente cliente = new Cliente("Ricardo", "21321311");
         Cliente cliente2 = new Cliente("Ricardo", "21321312");
         Veiculo veiculo = new Veiculo("M1", "AD-Dw-12", "BMW", 299);
         Veiculo veiculo2 = new Veiculo("e1", "EW-31-TG", "BMW", 500);
+
         Local local = getLocais().getFirst();
         Local local2 = getLocais().getLast();
+        Local local3 = getLocais().get(2);
 
         Oleo oleo1 = new Oleo("wd40");
         Oleo oleo2 = new Oleo("wd50");
+        Oleo oleo3 = new Oleo("wd50adsadasd");
         Pneu pneu1 = new Pneu("Continental");
         Pneu pneu2 = new Pneu("Michelin");
 
@@ -41,10 +47,13 @@ public class DadosDaAplicacao {
         local.addPeca(pneu1);
         local2.addPeca(oleo2);
         local2.addPeca(pneu2);
+        local3.addPeca(oleo3);
+        local2.addPeca(oleo3);
 
         sede.addVeiculo(veiculo);
         sede.addVeiculo(veiculo2);
         local.addVeiculo(veiculo);
+        local3.addVeiculo(veiculo2);
         getLocais().get(2).addVeiculo(veiculo2);
 
         clientes.add(cliente);
@@ -109,13 +118,34 @@ public class DadosDaAplicacao {
     }
 
     public LinkedList<Local> getLocaisComStockDe(String nomePeca) {
-        //TODO
-        return null;
+        LinkedList<Local> locais = new LinkedList<>();
+        for (Local local : getLocais()) {
+            if (local.pecaEmStock(nomePeca)){
+                locais.add(local);
+            }
+        }
+        return locais;
     }
 
     public LinkedList<Peca> getPecas() {
-        //TODO
-        return null;
+        LinkedList<Peca> pecas = new LinkedList<>();
+        for (Local local : getLocais()) {
+            for (Peca peca : local.getPecas()) {
+                pecas.add(peca);
+
+            }
+        }
+        return pecas;
+    }
+    public LinkedList<Veiculo> getVeiculos() {
+        LinkedList<Veiculo> veiculos = new LinkedList<>();
+        for (Local local : getLocais()) {
+            for (Veiculo veiculo : local.getVeiculos()) {
+                veiculos.add(veiculo);
+
+            }
+        }
+        return veiculos;
     }
 
     public void addCliente(Cliente cliente) {
