@@ -43,7 +43,7 @@ public class EcraTransferirPeca extends JFrame {
         buttonCancelar.addActionListener(this::btnCancelarActionPerformed);
     }
 
-    public static void transferirPeca(Frame parent, Peca peca, Local local) {
+    public static void mostrarTransferirPeca(Frame parent, Peca peca, Local local) {
         EcraTransferirPeca ecraTransferirPeca = new EcraTransferirPeca(parent, true, peca, local);
         ecraTransferirPeca.setLocationRelativeTo(parent);
         ecraTransferirPeca.setVisible(true);
