@@ -59,4 +59,10 @@ public class Local {
             pecas.remove(peca);
         }
     }
+
+    public void removeVeiculo(Veiculo veiculo) {
+        if (veiculo != null) {
+            veiculos.remove(veiculo);
+        }
+    }
 }

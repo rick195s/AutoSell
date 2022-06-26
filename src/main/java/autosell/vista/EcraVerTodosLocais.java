@@ -1,21 +1,23 @@
 package autosell.vista;
 
-import autosell.modelo.Cliente;
-import autosell.modelo.DadosDaAplicacao;
-import autosell.modelo.Local;
-import autosell.modelo.Veiculo;
+import autosell.modelo.*;
 
 import javax.swing.*;
 import java.awt.*;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 
 public class EcraVerTodosLocais extends JFrame{
     private JList<Local> listTodosLocais;
     private JPanel panelLocais;
-    private JComboBox cbTipoLocal; //TODO - selecionar tipo de local -
+
     private JList<Veiculo> listVeiculosFiltradosPorLocal;
     private JButton buttonFiltrarVeiculosLocal;
+
     private DefaultListModel<Local> modeloTodosLocais;
     private DefaultListModel<Veiculo> modeloVeiculosFiltrados;
 
@@ -27,7 +29,6 @@ public class EcraVerTodosLocais extends JFrame{
         initComponentes();
         atualizarTodosLocais();
 
-        //listTodosLocais.addMouseListener();
         buttonFiltrarVeiculosLocal.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -35,8 +36,8 @@ public class EcraVerTodosLocais extends JFrame{
                     JOptionPane.showMessageDialog(null,"Deve Selecionar um local para consultar");
                 }else
                     atualizarListaVeiculosFiltradaPorLocal();
-                System.out.println(listTodosLocais.getSelectedValue());
 
+                System.out.println(listTodosLocais.getSelectedValue());
             }
         });
     }
@@ -68,6 +69,5 @@ public class EcraVerTodosLocais extends JFrame{
         for (Veiculo veiculo : localSelecionado.getVeiculos()) {
             modeloVeiculosFiltrados.addElement(veiculo);
         }
-
     }
 }
