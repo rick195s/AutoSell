@@ -91,7 +91,5 @@ public class EcraPrincipal extends JFrame{
 
     public void btnVerPecasRegistadasActionPerformed(ActionEvent evt) {
         EcraVerTodasPecas.mostrarTodasPecas(this);
-
-
     }
 }

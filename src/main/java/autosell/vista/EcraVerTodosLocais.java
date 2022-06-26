@@ -1,5 +1,6 @@
 package autosell.vista;
 
+import autosell.modelo.Cliente;
 import autosell.modelo.DadosDaAplicacao;
 import autosell.modelo.Local;
 import autosell.modelo.Veiculo;
@@ -62,7 +63,9 @@ public class EcraVerTodosLocais extends JFrame{
 
     public void atualizarListaVeiculosFiltradaPorLocal() {
         modeloVeiculosFiltrados.removeAllElements();
-        for (Veiculo veiculo : DadosDaAplicacao.INSTANCE.getVeiculos()) {
+
+        Local localSelecionado = (Local) listTodosLocais.getSelectedValue();
+        for (Veiculo veiculo : localSelecionado.getVeiculos()) {
             modeloVeiculosFiltrados.addElement(veiculo);
         }
 
