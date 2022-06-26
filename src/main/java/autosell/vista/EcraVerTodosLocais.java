@@ -1,15 +1,14 @@
 package autosell.vista;
 
-import autosell.modelo.Cliente;
-import autosell.modelo.DadosDaAplicacao;
-import autosell.modelo.Local;
-import autosell.modelo.Veiculo;
+import autosell.modelo.*;
 
 import javax.swing.*;
 import java.awt.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 
 public class EcraVerTodosLocais extends JFrame{
@@ -37,8 +36,8 @@ public class EcraVerTodosLocais extends JFrame{
                     JOptionPane.showMessageDialog(null,"Deve Selecionar um local para consultar");
                 }else
                     atualizarListaVeiculosFiltradaPorLocal();
-                System.out.println(listTodosLocais.getSelectedValue());
 
+                System.out.println(listTodosLocais.getSelectedValue());
             }
         });
     }
@@ -70,6 +69,5 @@ public class EcraVerTodosLocais extends JFrame{
         for (Veiculo veiculo : localSelecionado.getVeiculos()) {
             modeloVeiculosFiltrados.addElement(veiculo);
         }
-
     }
 }

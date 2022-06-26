@@ -5,7 +5,6 @@ import autosell.modelo.Transacao;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Date;
 
 public class EcraPrincipal extends JFrame{
@@ -39,7 +38,7 @@ public class EcraPrincipal extends JFrame{
         btnVerTodosClientes.addActionListener(this::btnVerTodosClientesActionPerformed);
         btnVerLocaisRegistados.addActionListener(this::btnVerTodosLocaisActionPerformed);
         btnEstatisticas.addActionListener(this::btnEstatisticasActionPerformed);
-        btnAdicionarPeca.addActionListener(this::btnAdicionarPecaActionPerformed);
+        //TODO btnAdicionarPeca.addActionListener(this::btnAdicionarPecaActionPerformed);
 
         btnAdicionarVeiculo.addActionListener(this::btnAdicionarVeiculoActionPerformed);
 
@@ -88,10 +87,9 @@ public class EcraPrincipal extends JFrame{
         EcraEstatisticas.mostrarEstatisticas(this);
     }
 
-    public void btnAdicionarPecaActionPerformed(ActionEvent evt) {
-        EcraAdicionarPeca.adicionarPeca(this);
-    }
-
+//    public void btnAdicionarPecaActionPerformed(ActionEvent evt) {
+//        EcraTransferirPeca.adicionarPeca(this);
+//    }
 
     public void btnAdicionarVeiculoActionPerformed(ActionEvent evt) {
         EcraAdicionarVeiculo.adicionarVeiculo(this);
