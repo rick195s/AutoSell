@@ -79,10 +79,13 @@ public class EcraVerTodasPecas extends  JFrame {
         if (botao == MouseEvent.BUTTON1){
             int clickCount = evt.getClickCount();
             if( clickCount == 2) {
-                System.out.println("aquiqui");
-                Peca peca = (Peca) listTodasPecas.getSelectedValue();
-                Local local = (Local) listLocaisComPeca.getSelectedValue();
-                EcraTransferirPeca.transferirPeca(this, peca, local);
+                if (listTodasPecas.getSelectedValue() != null && listLocaisComPeca.getSelectedValue() != null) {
+                    Peca peca = (Peca) listTodasPecas.getSelectedValue();
+                    Local local = (Local) listLocaisComPeca.getSelectedValue();
+                    EcraTransferirPeca.transferirPeca(this, peca, local);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Selecione primeiro a peça e o local.");
+                }
             }
         }
     }

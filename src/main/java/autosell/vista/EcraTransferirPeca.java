@@ -30,7 +30,6 @@ public class EcraTransferirPeca extends JFrame {
         cbLocalARetirarPeca.setEnabled(false);
 
         initComponentes(peca, local);
-        //atualizarTodosLocais();
     }
 
     public void initComponentes(Peca peca, Local local) {
