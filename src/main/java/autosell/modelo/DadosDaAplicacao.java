@@ -119,7 +119,6 @@ public class DadosDaAplicacao {
 
     public LinkedList<Local> getLocais() {
         LinkedList<Local> locais = new LinkedList<>(this.locais);
-        locais.add(sede);
         return locais;
     }
 
@@ -167,12 +166,6 @@ public class DadosDaAplicacao {
         }
     }
 
-    public void removeVeiculoA(Local local, Veiculo veiculo) {
-        if (local != null && veiculo != null) {
-            local.removeVeiculo(veiculo);
-        }
-    }
-
     public void addPecaA(Local local, Peca peca) {
         if (local != null && peca != null) {
             local.addPeca(peca);
@@ -205,6 +198,10 @@ public class DadosDaAplicacao {
             return;
         }
 
+        if (this.sede != null) {
+            this.locais.remove(this.sede);
+        }
+
         this.sede = sede;
     }
 
@@ -213,9 +210,11 @@ public class DadosDaAplicacao {
             return;
         }
 
+        if (local instanceof Sede) {
+            setSede((Sede) local);
+        }
+
         locais.add(local);
     }
 
-    public void removePecaA() {
-    }
 }
