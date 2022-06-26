@@ -102,6 +102,14 @@ public class DadosDaAplicacao {
         return transacoesCliente;
     }
 
+    public LinkedList<Veiculo> getVeiculosDe(Local local) {
+        if (local == null) {
+            return null;
+        }
+
+        return new LinkedList<>(local.getVeiculos());
+    }
+
     public LinkedList<Cliente> getClientes() {
         return clientes;
     }
@@ -156,21 +164,27 @@ public class DadosDaAplicacao {
     }
 
     public void addVeiculoA(Local local, Veiculo veiculo) {
-        //TODO
+        if (local != null && veiculo != null) {
+            local.addVeiculo(veiculo);
+        }
+    }
+
+    public void removeVeiculoA(Local local, Veiculo veiculo) {
+        if (local != null && veiculo != null) {
+            local.removeVeiculo(veiculo);
+        }
     }
 
     public void addPecaA(Local local, Peca peca) {
         if (local != null && peca != null) {
             local.addPeca(peca);
         }
-        throw new NullPointerException();
     }
 
     public void removePecaA(Local local, Peca peca) {
         if (local != null && peca != null) {
             local.removePeca(peca);
         }
-        throw new NullPointerException();
     }
 
 

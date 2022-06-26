@@ -38,8 +38,6 @@ public class EcraAdicionarPeca extends JFrame {
         cbEscolherPeca.setModel(modalPecas);
         cbLocalAAdionarPeca.setModel(modalLocaisCBLocalAdicionarPeca);
 
-        //buttonAdicionarPeca.setEnabled(false);
-
         buttonAdicionarPeca.addActionListener(this::btnAdicionarPecaActionPerformed);
         buttonCancelar.addActionListener(this::btnCancelarActionPerformed);
         cbLocalARetirarPeca.addActionListener(this::atualizarCBPecaActionPerformed);
@@ -56,18 +54,23 @@ public class EcraAdicionarPeca extends JFrame {
     }
 
     public void btnAdicionarPecaActionPerformed(ActionEvent evt) {
-        try {
-            DadosDaAplicacao.INSTANCE.addPecaA((Local) cbLocalAAdionarPeca.getSelectedItem(), (Peca) cbEscolherPeca.getSelectedItem());
-            DadosDaAplicacao.INSTANCE.removePecaA((Local) cbLocalARetirarPeca.getSelectedItem(), (Peca) cbEscolherPeca.getSelectedItem());
-            JOptionPane.showMessageDialog(null, "Adicionada peça com sucesso!");
-        } catch (Exception exception) {
-            JOptionPane.showMessageDialog(null, "Operação falhada");
-        } finally {
-            modalLocais.removeAllElements();
-            modalPecas.removeAllElements();
-            modalLocaisCBLocalAdicionarPeca.removeAllElements();
+        if (cbLocalARetirarPeca.getSelectedItem() == null) {
+            return;
+        }
+        if (cbEscolherPeca.getSelectedItem() == null) {
+            return;
+        }
+        if (cbLocalAAdionarPeca.getSelectedItem() == null) {
+            return;
         }
 
+        DadosDaAplicacao.INSTANCE.addPecaA((Local) cbLocalAAdionarPeca.getSelectedItem(), (Peca) cbEscolherPeca.getSelectedItem());
+        DadosDaAplicacao.INSTANCE.removePecaA((Local) cbLocalARetirarPeca.getSelectedItem(), (Peca) cbEscolherPeca.getSelectedItem());
+        JOptionPane.showMessageDialog(null, "Adicionada peça com sucesso!");
+        modalLocais.removeAllElements();
+        modalPecas.removeAllElements();
+        modalLocaisCBLocalAdicionarPeca.removeAllElements();
+        atualizarTodosLocais();
     }
 
     public void atualizarCBPecaActionPerformed(ActionEvent evt) {
@@ -77,7 +80,6 @@ public class EcraAdicionarPeca extends JFrame {
             modalPecas.addAll(((Local) selectedItem).getPecas());
             atualizarCBLocalAdicionarPeca(selectedItem);
         }
-
     }
 
     public void atualizarCBLocalAdicionarPeca(Object selectedItem) {

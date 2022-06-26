@@ -7,15 +7,18 @@ import autosell.modelo.Veiculo;
 
 import javax.swing.*;
 import java.awt.*;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 
 public class EcraVerTodosLocais extends JFrame{
     private JList<Local> listTodosLocais;
     private JPanel panelLocais;
-    private JComboBox cbTipoLocal; //TODO - selecionar tipo de local -
+
     private JList<Veiculo> listVeiculosFiltradosPorLocal;
     private JButton buttonFiltrarVeiculosLocal;
+
     private DefaultListModel<Local> modeloTodosLocais;
     private DefaultListModel<Veiculo> modeloVeiculosFiltrados;
 
@@ -27,7 +30,6 @@ public class EcraVerTodosLocais extends JFrame{
         initComponentes();
         atualizarTodosLocais();
 
-        //listTodosLocais.addMouseListener();
         buttonFiltrarVeiculosLocal.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
