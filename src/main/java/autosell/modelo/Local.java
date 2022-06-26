@@ -7,7 +7,7 @@ public class Local {
     private LinkedList<Peca> pecas;
     private LinkedList<Veiculo> veiculos;
 
-    protected Local(String nome) {
+    public Local(String nome) {
         this.nome = nome;
         veiculos = new LinkedList<>();
         pecas = new LinkedList<>();

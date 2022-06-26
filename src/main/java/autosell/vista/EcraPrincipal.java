@@ -1,11 +1,11 @@
 package autosell.vista;
 
 import autosell.modelo.DadosDaAplicacao;
+import autosell.modelo.Evento;
 import autosell.modelo.Transacao;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Date;
 
 public class EcraPrincipal extends JFrame{
@@ -40,6 +40,7 @@ public class EcraPrincipal extends JFrame{
         btnVerLocaisRegistados.addActionListener(this::btnVerTodosLocaisActionPerformed);
         btnEstatisticas.addActionListener(this::btnEstatisticasActionPerformed);
         btnAdicionarPeca.addActionListener(this::btnAdicionarPecaActionPerformed);
+        btnAdicionarEvento.addActionListener(this::btnAdicionarEventoActionPerformed);
 
         btnAdicionarVeiculo.addActionListener(this::btnAdicionarVeiculoActionPerformed);
 
@@ -89,7 +90,7 @@ public class EcraPrincipal extends JFrame{
     }
 
     public void btnAdicionarPecaActionPerformed(ActionEvent evt) {
-        EcraAdicionarPeca.adicionarPeca(this);
+        //EcraAdicionarEventos.(this);
     }
 
 
@@ -99,5 +100,9 @@ public class EcraPrincipal extends JFrame{
 
     public void btnVerPecasRegistadasActionPerformed(ActionEvent evt) {
         EcraVerTodasPecas.mostrarTodasPecas(this);
+    }
+
+    public void btnAdicionarEventoActionPerformed(ActionEvent evt) {
+        EcraAdicionarEvento.mostrarCriacaoEvento(this);
     }
 }

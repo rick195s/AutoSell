@@ -27,20 +27,12 @@ public class EcraVerTodasPecas extends  JFrame {
 
 
 
-        buttonVerPecasNosLocais.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (listTodasPecas.getSelectedValue()==null){
-                    JOptionPane.showMessageDialog(null,"Deve Selecionar uma peça para consultar");
-                }else
-                    atualizarLocaisFiltradosPorPeca();
-                System.out.println(listTodasPecas.getSelectedValue());
-            }
-        });
+
     }
     public void initComponentes() {
         modeloTodasPecas = new DefaultListModel<>();
         modeloPecasFiltradas = new DefaultListModel<>();
+        buttonVerPecasNosLocais.addActionListener(this::buttonVerPecasNosLocaisActionPerformed);
         listLocaisComPeca.setModel(modeloPecasFiltradas);
         listTodasPecas.setModel(modeloTodasPecas);
     }
@@ -64,6 +56,14 @@ public class EcraVerTodasPecas extends  JFrame {
         EcraVerTodasPecas ecraVerTodasPecas = new EcraVerTodasPecas();
         ecraVerTodasPecas.setLocationRelativeTo(parent);
         ecraVerTodasPecas.setVisible(true);
+    }
+
+    public void buttonVerPecasNosLocaisActionPerformed(ActionEvent evt) {
+        if (listTodasPecas.getSelectedValue()==null){
+            JOptionPane.showMessageDialog(null,"Deve Selecionar uma peça para consultar");
+        }else
+            atualizarLocaisFiltradosPorPeca();
+
     }
 }
 
