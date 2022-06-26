@@ -17,6 +17,7 @@ public class EcraPrincipal extends JFrame{
     private JLabel dateLabel;
     private JButton btnAdicionarEvento;
     private JButton btnAdicionarPeca;
+
     private JButton btnAdicionarVeiculo;
     private JButton btnVerLocaisRegistados;
     private JButton btnVerPecasRegistadas;
@@ -39,7 +40,11 @@ public class EcraPrincipal extends JFrame{
         btnVerLocaisRegistados.addActionListener(this::btnVerTodosLocaisActionPerformed);
         btnEstatisticas.addActionListener(this::btnEstatisticasActionPerformed);
         btnAdicionarPeca.addActionListener(this::btnAdicionarPecaActionPerformed);
+
         btnAdicionarVeiculo.addActionListener(this::btnAdicionarVeiculoActionPerformed);
+
+        btnVerPecasRegistadas.addActionListener(this::btnVerPecasRegistadasActionPerformed);
+
 
         modeloUltimasTransacoes = new DefaultListModel<>();
         lstUltimasTransacoes.setModel(modeloUltimasTransacoes);
@@ -87,7 +92,12 @@ public class EcraPrincipal extends JFrame{
         EcraAdicionarPeca.adicionarPeca(this);
     }
 
+
     public void btnAdicionarVeiculoActionPerformed(ActionEvent evt) {
         EcraAdicionarVeiculo.adicionarVeiculo(this);
+    }
+
+    public void btnVerPecasRegistadasActionPerformed(ActionEvent evt) {
+        EcraVerTodasPecas.mostrarTodasPecas(this);
     }
 }

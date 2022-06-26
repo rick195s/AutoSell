@@ -2,18 +2,25 @@ package autosell.vista;
 
 import autosell.modelo.Cliente;
 import autosell.modelo.DadosDaAplicacao;
-import autosell.modelo.Filial;
 import autosell.modelo.Local;
+import autosell.modelo.Veiculo;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 
 public class EcraVerTodosLocais extends JFrame{
     private JList<Local> listTodosLocais;
     private JPanel panelLocais;
+
+    private JList<Veiculo> listVeiculosFiltradosPorLocal;
+    private JButton buttonFiltrarVeiculosLocal;
+
     private DefaultListModel<Local> modeloTodosLocais;
+    private DefaultListModel<Veiculo> modeloVeiculosFiltrados;
 
     public EcraVerTodosLocais() {
         setTitle("Todos os Locais Registados");
@@ -23,23 +30,17 @@ public class EcraVerTodosLocais extends JFrame{
         initComponentes();
         atualizarTodosLocais();
 
-        listTodosLocais.addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent evt) {
-                listMouseClickActionPerformed(evt);
+        buttonFiltrarVeiculosLocal.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (listTodosLocais.getSelectedValue()==null){
+                    JOptionPane.showMessageDialog(null,"Deve Selecionar um local para consultar");
+                }else
+                    atualizarListaVeiculosFiltradaPorLocal();
+                System.out.println(listTodosLocais.getSelectedValue());
+
             }
         });
-    }
-
-
-    public void listMouseClickActionPerformed(MouseEvent evt){
-        int botao = evt.getButton();
-        if (botao == MouseEvent.BUTTON1){
-            int clickCount = evt.getClickCount();
-            if( clickCount == 2) {
-                Local local = (Local) listTodosLocais.getSelectedValue();
-                EcraVerVeiculosDeLocal.mostrarVeiculosDeLocal(this, local);
-            }
-        }
     }
 
     public static void mostrarTodosLocais(Frame parent) {
@@ -50,7 +51,9 @@ public class EcraVerTodosLocais extends JFrame{
 
     public void initComponentes() {
         modeloTodosLocais = new DefaultListModel<>();
+        modeloVeiculosFiltrados = new DefaultListModel<>();
         listTodosLocais.setModel(modeloTodosLocais);
+        listVeiculosFiltradosPorLocal.setModel(modeloVeiculosFiltrados);
     }
 
     public void atualizarTodosLocais() {
@@ -58,5 +61,13 @@ public class EcraVerTodosLocais extends JFrame{
         for (Local local : DadosDaAplicacao.INSTANCE.getLocais()) {
             modeloTodosLocais.addElement(local);
         }
+    }
+
+    public void atualizarListaVeiculosFiltradaPorLocal() {
+        modeloVeiculosFiltrados.removeAllElements();
+        for (Veiculo veiculo : DadosDaAplicacao.INSTANCE.getVeiculos()) {
+            modeloVeiculosFiltrados.addElement(veiculo);
+        }
+
     }
 }
