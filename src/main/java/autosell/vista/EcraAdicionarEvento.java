@@ -5,6 +5,8 @@ import autosell.modelo.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class EcraAdicionarEvento extends JDialog {
     private JComboBox comboLocal;
@@ -20,8 +22,9 @@ public class EcraAdicionarEvento extends JDialog {
     private Evento evento;
 
 
-    private DefaultListModel<Veiculo> modalVeiculos;
-    private DefaultComboBoxModel<Local> modalLocais;
+    private DefaultListModel<Veiculo> modelVeiculos;
+    private DefaultListModel<Veiculo> modelVeiculosAdicionados;
+    private DefaultComboBoxModel<Local> modelLocais;
 
     public EcraAdicionarEvento() {
         setTitle("Adicionar Evento");
@@ -30,6 +33,28 @@ public class EcraAdicionarEvento extends JDialog {
 
         initComponentes();
         atualizarTodosLocais();
+        atualizarTodosVeiculos();
+
+
+        listTodosVeiculos.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+                lstMouseClickActionPerformed(evt);
+            }
+        });
+        listVeiculosAdicionados.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+                listVeiculosAdicionadosActionPerformed(evt);
+            }
+        });
+    }
+
+    private void atualizarTodosVeiculos() {
+        modelVeiculos.removeAllElements();
+        for (Local local : DadosDaAplicacao.INSTANCE.getLocais()) {
+            for (Veiculo veiculo : local.getVeiculos()) {
+                modelVeiculos.addElement(veiculo);
+            }
+        }
     }
 
     public static void mostrarCriacaoEvento(Frame parent){
@@ -41,16 +66,21 @@ public class EcraAdicionarEvento extends JDialog {
 
 
     public void initComponentes() {
-        modalLocais = new DefaultComboBoxModel<>();
-        modalVeiculos = new DefaultListModel<>();
-        comboLocal.setModel(modalLocais);
+        modelLocais = new DefaultComboBoxModel<>();
+        modelVeiculos = new DefaultListModel<>();
+        modelVeiculosAdicionados = new DefaultListModel<>();
 
-        listTodosVeiculos.setModel(modalVeiculos);
+        listVeiculosAdicionados.setModel(modelVeiculosAdicionados);
+        comboLocal.setModel(modelLocais);
+
+        listTodosVeiculos.setModel(modelVeiculos);
 
         buttonCriarEvento.addActionListener(this::btnCriarEvento);
         buttonCancelar.addActionListener(this::btnCancelarActionPerformed);
         btnCriarLocalDeEvento.addActionListener(this::btnCriarNovoLocal);
-        comboLocal.addActionListener(this::updateListVeiculosDisponiveis);
+
+
+
     }
 
     private void btnCriarNovoLocal(ActionEvent actionEvent) {
@@ -69,39 +99,29 @@ public class EcraAdicionarEvento extends JDialog {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,e.getMessage());
         }
-        System.out.println(evento);
-//       dispose();
+        dispose();
+
     }
 
-    private void updateListVeiculosDisponiveis(ActionEvent actionEvent) {
-        atualizarListaVeiculosDisponiveisPorLocal();
-    }
 
 
     public void atualizarTodosLocais() {
-        modalLocais.removeAllElements();
-        modalLocais.addAll(DadosDaAplicacao.INSTANCE.getLocais());
+        modelLocais.removeAllElements();
+        modelLocais.addAll(DadosDaAplicacao.INSTANCE.getLocais());
     }
 
 
     public void atualizarLocais(){
-        modalLocais.removeAllElements();
+        modelLocais.removeAllElements();
         for (Local local : DadosDaAplicacao.INSTANCE.getLocais()) {
-            modalLocais.addElement(local);
+            modelLocais.addElement(local);
         }
     }
 
     public void atualizarVeiculos(Local local){
-        modalVeiculos.removeAllElements();
+        modelVeiculos.removeAllElements();
         for (Veiculo veiculo : local.getVeiculos()) {
-            modalVeiculos.addElement(veiculo);
-        }
-    }
-    public void comoboLocalActionPerformed(ActionEvent evt){
-        Local local = (Local) comboLocal.getSelectedItem();
-
-        if (local != null){
-            atualizarVeiculos(local);
+            modelVeiculos.addElement(veiculo);
         }
     }
 
@@ -110,15 +130,38 @@ public class EcraAdicionarEvento extends JDialog {
     }
 
     public void atualizarListaVeiculosDisponiveisPorLocal() {
-        modalVeiculos.removeAllElements();
+        modelVeiculos.removeAllElements();
 
         Local localSelecionado = (Local) comboLocal.getSelectedItem();
         if(localSelecionado!=null) {
             for (Veiculo veiculo : localSelecionado.getVeiculos()) {
-                modalVeiculos.addElement(veiculo);
+                modelVeiculos.addElement(veiculo);
             }
         }
-
     }
 
+    public void lstMouseClickActionPerformed(MouseEvent evt){
+        int botao = evt.getButton();
+        if (botao == MouseEvent.BUTTON1){
+            int clickCount = evt.getClickCount();
+            if( clickCount == 2) {
+                Veiculo veiculo = (Veiculo) listTodosVeiculos.getSelectedValue();
+                modelVeiculosAdicionados.addElement(veiculo);
+                modelVeiculos.removeElement(veiculo);
+            }
+        }
+    }
+
+    public void listVeiculosAdicionadosActionPerformed(MouseEvent evt){
+        int botao = evt.getButton();
+        if (botao == MouseEvent.BUTTON1){
+            int clickCount = evt.getClickCount();
+            if( clickCount == 2) {
+                Veiculo veiculo = (Veiculo) listVeiculosAdicionados.getSelectedValue();
+                modelVeiculos.addElement(veiculo);
+                modelVeiculosAdicionados.removeElement(veiculo);
+
+            }
+        }
+    }
 }
