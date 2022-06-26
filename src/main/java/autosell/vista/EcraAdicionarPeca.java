@@ -80,7 +80,6 @@ public class EcraAdicionarPeca extends JFrame {
             modalPecas.addAll(((Local) selectedItem).getPecas());
             atualizarCBLocalAdicionarPeca(selectedItem);
         }
-
     }
 
     public void atualizarCBLocalAdicionarPeca(Object selectedItem) {
