@@ -14,6 +14,7 @@ public class EcraEstatisticas extends JDialog{
     private JLabel labelNumPneusStock;
     private JLabel labelProfitSede;
     private JPanel panel1;
+    private JLabel labelMelhorCliente;
 
     public EcraEstatisticas(Frame parent, boolean modal) {
         super(parent, "Ecra Criar Cliente", modal);
@@ -24,12 +25,13 @@ public class EcraEstatisticas extends JDialog{
     }
 
     private void getEstatisticas() {
-        labelFilialMaisVende.setText(Estatisticas.getFilialMaisVende().getNome());
-        labelFilialMaisProfit.setText(Estatisticas.getFilialMaisProfit().getNome());
+        labelFilialMaisVende.setText(Estatisticas.getFilialMaisVende()+"");
+        labelFilialMaisProfit.setText(Estatisticas.getFilialMaisProfit()+"");
         labelProfitSede.setText(Estatisticas.profitSede()+" €");
         labelNumCarrosVendidos.setText(Estatisticas.getNumCarrosVendidos()+"");
         labelNumPneusStock.setText(Estatisticas.getNumPneusStock()+"");
         labelNumCarrosStock.setText(Estatisticas.getNumCarrosStock() + "");
+        labelMelhorCliente.setText(Estatisticas.getMelhorCliente()+"");
     }
 
     public static void mostrarEstatisticas(Frame parent){
