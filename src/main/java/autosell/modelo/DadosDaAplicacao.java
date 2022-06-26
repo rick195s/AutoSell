@@ -8,23 +8,23 @@ public class DadosDaAplicacao {
     public static DadosDaAplicacao INSTANCE = new DadosDaAplicacao();
 
     private LinkedList<Transacao> transacoes;
-    private LinkedList<Filial> filiais;
     private Sede sede;
     private LinkedList<Cliente> clientes;
     private LinkedList<Evento> eventos;
+    private LinkedList<Local> locais;
 
     private DadosDaAplicacao() {
         transacoes = new LinkedList<>();
-        filiais = new LinkedList<>();
         clientes = new LinkedList<>();
         eventos = new LinkedList<>();
+        locais = new LinkedList<>();
 
         setSede(new Sede("Sede AutoSell"));
-        filiais.add(new Filial("Filial A"));
-        filiais.add(new Filial("Filial B"));
-        filiais.add(new Filial("Filial C"));
-        filiais.add(new Filial("Filial D"));
-        filiais.add(new Filial("Filial asd"));
+        locais.add(new Filial("Filial A"));
+        locais.add(new Filial("Filial B"));
+        locais.add(new Filial("Filial C"));
+        locais.add(new Filial("Filial D"));
+        locais.add(new Filial("Filial asd"));
 
         Cliente cliente = new Cliente("Ricardo", "21321311");
         Cliente cliente2 = new Cliente("Ricardo", "21321312");
@@ -118,7 +118,7 @@ public class DadosDaAplicacao {
     }
 
     public LinkedList<Local> getLocais() {
-        LinkedList<Local> locais = new LinkedList<>(filiais);
+        LinkedList<Local> locais = new LinkedList<>(this.locais);
         locais.add(sede);
         return locais;
     }
@@ -208,12 +208,12 @@ public class DadosDaAplicacao {
         this.sede = sede;
     }
 
-    public void addFilial(Filial filial) {
-        if (filial == null) {
+    public void addLocal(Local local) {
+        if (local == null) {
             return;
         }
 
-        filiais.add(filial);
+        locais.add(local);
     }
 
     public void removePecaA() {

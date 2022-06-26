@@ -28,13 +28,12 @@ public class EcraVerTodasPecas extends  JFrame {
         atualizarTodasPecas();
 
 
-
         buttonVerPecasNosLocais.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (listTodasPecas.getSelectedValue()==null){
-                    JOptionPane.showMessageDialog(null,"Deve Selecionar uma peça para consultar");
-                }else
+                if (listTodasPecas.getSelectedValue() == null) {
+                    JOptionPane.showMessageDialog(null, "Deve Selecionar uma peça para consultar");
+                } else
                     atualizarLocaisFiltradosPorPeca();
                 System.out.println(listTodasPecas.getSelectedValue());
             }
@@ -45,10 +44,13 @@ public class EcraVerTodasPecas extends  JFrame {
                 listTodosLocaisMouseClickActionPerformed(evt);
             }
         });
+
     }
+
     public void initComponentes() {
         modeloTodasPecas = new DefaultListModel<>();
         modeloPecasFiltradas = new DefaultListModel<>();
+        buttonVerPecasNosLocais.addActionListener(this::buttonVerPecasNosLocaisActionPerformed);
         listLocaisComPeca.setModel(modeloPecasFiltradas);
         listTodasPecas.setModel(modeloTodasPecas);
     }
@@ -68,6 +70,7 @@ public class EcraVerTodasPecas extends  JFrame {
         }
 
     }
+
     public static void mostrarTodasPecas(Frame parent) {
         EcraVerTodasPecas ecraVerTodasPecas = new EcraVerTodasPecas();
         ecraVerTodasPecas.setLocationRelativeTo(parent);
@@ -76,9 +79,9 @@ public class EcraVerTodasPecas extends  JFrame {
 
     public void listTodosLocaisMouseClickActionPerformed(MouseEvent evt) {
         int botao = evt.getButton();
-        if (botao == MouseEvent.BUTTON1){
+        if (botao == MouseEvent.BUTTON1) {
             int clickCount = evt.getClickCount();
-            if( clickCount == 2) {
+            if (clickCount == 2) {
                 if (listTodasPecas.getSelectedValue() != null && listLocaisComPeca.getSelectedValue() != null) {
                     Peca peca = (Peca) listTodasPecas.getSelectedValue();
                     Local local = (Local) listLocaisComPeca.getSelectedValue();
@@ -89,6 +92,16 @@ public class EcraVerTodasPecas extends  JFrame {
             }
         }
     }
+
+    public void buttonVerPecasNosLocaisActionPerformed(ActionEvent evt) {
+        if (listTodasPecas.getSelectedValue() == null) {
+            JOptionPane.showMessageDialog(null, "Deve Selecionar uma peça para consultar");
+        } else{
+            atualizarLocaisFiltradosPorPeca();
+
+        }
+    }
+
 }
 
 
