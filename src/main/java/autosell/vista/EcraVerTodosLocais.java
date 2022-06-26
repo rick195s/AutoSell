@@ -1,17 +1,22 @@
 package autosell.vista;
 
 import autosell.modelo.DadosDaAplicacao;
-import autosell.modelo.Filial;
 import autosell.modelo.Local;
+import autosell.modelo.Veiculo;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class EcraVerTodosLocais extends JFrame{
     private JList<Local> listTodosLocais;
     private JPanel panelLocais;
     private JComboBox cbTipoLocal; //TODO - selecionar tipo de local -
+    private JList<Veiculo> listVeiculosFiltradosPorLocal;
+    private JButton buttonFiltrarVeiculosLocal;
     private DefaultListModel<Local> modeloTodosLocais;
+    private DefaultListModel<Veiculo> modeloVeiculosFiltrados;
 
     public EcraVerTodosLocais() {
         setTitle("Todos os Locais Registados");
@@ -22,6 +27,17 @@ public class EcraVerTodosLocais extends JFrame{
         atualizarTodosLocais();
 
         //listTodosLocais.addMouseListener();
+        buttonFiltrarVeiculosLocal.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (listTodosLocais.getSelectedValue()==null){
+                    JOptionPane.showMessageDialog(null,"Deve Selecionar um local para consultar");
+                }else
+                    atualizarListaVeiculosFiltradaPorLocal();
+                System.out.println(listTodosLocais.getSelectedValue());
+
+            }
+        });
     }
 
     public static void mostrarTodosLocais(Frame parent) {
@@ -32,7 +48,9 @@ public class EcraVerTodosLocais extends JFrame{
 
     public void initComponentes() {
         modeloTodosLocais = new DefaultListModel<>();
+        modeloVeiculosFiltrados = new DefaultListModel<>();
         listTodosLocais.setModel(modeloTodosLocais);
+        listVeiculosFiltradosPorLocal.setModel(modeloVeiculosFiltrados);
     }
 
     public void atualizarTodosLocais() {
@@ -40,5 +58,13 @@ public class EcraVerTodosLocais extends JFrame{
         for (Local local : DadosDaAplicacao.INSTANCE.getLocais()) {
             modeloTodosLocais.addElement(local);
         }
+    }
+
+    public void atualizarListaVeiculosFiltradaPorLocal() {
+        modeloVeiculosFiltrados.removeAllElements();
+        for (Veiculo veiculo : DadosDaAplicacao.INSTANCE.getVeiculos()) {
+            modeloVeiculosFiltrados.addElement(veiculo);
+        }
+
     }
 }
