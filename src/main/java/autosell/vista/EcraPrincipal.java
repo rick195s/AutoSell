@@ -88,11 +88,11 @@ public class EcraPrincipal extends JFrame{
     }
 
     public void btnAdicionarPecaActionPerformed(ActionEvent evt) {
-        EcraAdicionarPeca.adicionarPeca(this);
+        EcraAdicionarPeca.mostrarAdicionarPeca(this);
     }
 
     public void btnAdicionarVeiculoActionPerformed(ActionEvent evt) {
-        EcraAdicionarVeiculo.adicionarVeiculo(this);
+        EcraAdicionarVeiculo.mostrarAdicionarVeiculo(this);
     }
 
     public void btnVerPecasRegistadasActionPerformed(ActionEvent evt) {

@@ -25,7 +25,7 @@ public class EcraAdicionarPeca extends JFrame{
         atualizarLocais();
     }
 
-    public static void adicionarPeca(Frame parent) {
+    public static void mostrarAdicionarPeca(Frame parent) {
         EcraAdicionarPeca ecraAdicionarPeca = new EcraAdicionarPeca();
         ecraAdicionarPeca.setLocationRelativeTo(parent);
         ecraAdicionarPeca.setVisible(true);
