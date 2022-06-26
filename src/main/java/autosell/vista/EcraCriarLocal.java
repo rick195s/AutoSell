@@ -35,7 +35,7 @@ public class EcraCriarLocal extends JDialog {
     }
 
     public void initComponentes(){
-        buttonCriarLocal.addActionListener(this::btnCriarClienteActionPerformed);
+        buttonCriarLocal.addActionListener(this::btnCriarLocalActionPerformed);
         buttonCancelar.addActionListener(this::btnCancelarActionPerformed);
     }
 
@@ -49,12 +49,13 @@ public class EcraCriarLocal extends JDialog {
 
 
 
-    public void btnCriarClienteActionPerformed(ActionEvent evt) {
+    public void btnCriarLocalActionPerformed(ActionEvent evt) {
         if (!isNomeValido(textFieldLocal.getText())){
             return;
         }
 
         local = new Local(textFieldLocal.getText());
+        dispose();
 
     }
 
