@@ -26,8 +26,6 @@ public class DadosDaAplicacao {
         locais.add(new Filial("Filial D"));
         locais.add(new Filial("Filial asd"));
 
-
-
         Cliente cliente = new Cliente("Ricardo", "21321311");
         Cliente cliente2 = new Cliente("Ricardo", "21321312");
         Veiculo veiculo = new Veiculo("M1", "AD-Dw-12", "BMW", 299);

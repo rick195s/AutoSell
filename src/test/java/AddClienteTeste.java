@@ -16,14 +16,22 @@ public class AddClienteTeste {
 
     @Test
     public void TesteInformacoesCliente(){
-        Cliente cliente = new Cliente("Guilherme", "434343232");
+        Cliente cliente = new Cliente("Guilherme", "43434323");
 
         DadosDaAplicacao.INSTANCE.addCliente(cliente);
 
         assertEquals("Guilherme" , cliente.getNome());
-        assertEquals("434343232", cliente.getNIF());
-
+        assertEquals("43434323", cliente.getNIF());
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void TesteNIFCliente(){
+        Cliente cliente = new Cliente("Guilherme", "43434dw2133232");
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void TesteNomeCliente(){
+        Cliente cliente = new Cliente("12", null);
+    }
 
 }

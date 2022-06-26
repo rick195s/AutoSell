@@ -72,6 +72,7 @@ public class EcraPrincipal extends JFrame{
     public void btnRegistarTransacaoActionPerformed(ActionEvent evt) {
         Transacao transacao = EcraRegistarTransacao.mostrarCriacaoTransacao(this);
         if (transacao != null){
+            transacao.getLocal().removeVeiculo(transacao.getVeiculo());
             DadosDaAplicacao.INSTANCE.addTransacao(transacao);
             atualizarUltimasTransacoes();
         }
@@ -90,12 +91,11 @@ public class EcraPrincipal extends JFrame{
     }
 
     public void btnAdicionarPecaActionPerformed(ActionEvent evt) {
-        //EcraAdicionarEventos.(this);
+        EcraAdicionarPeca.mostrarAdicionarPeca(this);
     }
 
-
     public void btnAdicionarVeiculoActionPerformed(ActionEvent evt) {
-        EcraAdicionarVeiculo.adicionarVeiculo(this);
+        EcraAdicionarVeiculo.mostrarAdicionarVeiculo(this);
     }
 
     public void btnVerPecasRegistadasActionPerformed(ActionEvent evt) {

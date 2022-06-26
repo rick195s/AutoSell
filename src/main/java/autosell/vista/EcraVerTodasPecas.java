@@ -8,6 +8,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class EcraVerTodasPecas extends  JFrame {
     private JPanel panelPecas;
@@ -26,9 +28,25 @@ public class EcraVerTodasPecas extends  JFrame {
         atualizarTodasPecas();
 
 
+        buttonVerPecasNosLocais.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (listTodasPecas.getSelectedValue() == null) {
+                    JOptionPane.showMessageDialog(null, "Deve Selecionar uma peça para consultar");
+                } else
+                    atualizarLocaisFiltradosPorPeca();
+                System.out.println(listTodasPecas.getSelectedValue());
+            }
+        });
 
+        listLocaisComPeca.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+                listTodosLocaisMouseClickActionPerformed(evt);
+            }
+        });
 
     }
+
     public void initComponentes() {
         modeloTodasPecas = new DefaultListModel<>();
         modeloPecasFiltradas = new DefaultListModel<>();
@@ -52,19 +70,38 @@ public class EcraVerTodasPecas extends  JFrame {
         }
 
     }
+
     public static void mostrarTodasPecas(Frame parent) {
         EcraVerTodasPecas ecraVerTodasPecas = new EcraVerTodasPecas();
         ecraVerTodasPecas.setLocationRelativeTo(parent);
         ecraVerTodasPecas.setVisible(true);
     }
 
+    public void listTodosLocaisMouseClickActionPerformed(MouseEvent evt) {
+        int botao = evt.getButton();
+        if (botao == MouseEvent.BUTTON1) {
+            int clickCount = evt.getClickCount();
+            if (clickCount == 2) {
+                if (listTodasPecas.getSelectedValue() != null && listLocaisComPeca.getSelectedValue() != null) {
+                    Peca peca = (Peca) listTodasPecas.getSelectedValue();
+                    Local local = (Local) listLocaisComPeca.getSelectedValue();
+                    EcraTransferirPeca.mostrarTransferirPeca(this, peca, local);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Selecione primeiro a peça e o local.");
+                }
+            }
+        }
+    }
+
     public void buttonVerPecasNosLocaisActionPerformed(ActionEvent evt) {
-        if (listTodasPecas.getSelectedValue()==null){
-            JOptionPane.showMessageDialog(null,"Deve Selecionar uma peça para consultar");
-        }else
+        if (listTodasPecas.getSelectedValue() == null) {
+            JOptionPane.showMessageDialog(null, "Deve Selecionar uma peça para consultar");
+        } else{
             atualizarLocaisFiltradosPorPeca();
 
+        }
     }
+
 }
 
 

@@ -8,7 +8,7 @@ public class GetTransacoesCliente {
     public void TesteTransacoesCliente(){
 
         Cliente cliente = new Cliente("Ricardo", "21321311");
-        Cliente cliente2 = new Cliente("Guilherme", "754421542");
+        Cliente cliente2 = new Cliente("Guilherme", "75442154");
         Veiculo veiculo = new Veiculo("M1", "AD-Dw-12", "BMW", 299);
         Local local = DadosDaAplicacao.INSTANCE.getLocais().getFirst();
 

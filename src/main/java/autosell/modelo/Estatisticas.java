@@ -21,8 +21,6 @@ public class Estatisticas {
                 if (hashMap.getOrDefault(filialMaisVende,0) < numTransacoes+1) {
                     filialMaisVende = (Filial) local;
                 }
-
-
             }
         }
 
@@ -93,5 +91,25 @@ public class Estatisticas {
         }
 
         return numCarrosStock;
+    }
+
+    public static Cliente getMelhorCliente() {
+
+        HashMap<Cliente, Integer> hashMap = new HashMap<>();
+
+        Cliente melhorCliente = DadosDaAplicacao.INSTANCE.getClientes().getFirst();
+
+        for (Transacao transacao : DadosDaAplicacao.INSTANCE.getTransacoes()) {
+            Cliente cliente = transacao.getCliente();
+                Integer numTransacoes = hashMap.getOrDefault(cliente, 0);
+
+                hashMap.put(cliente, numTransacoes +1);
+
+                if (hashMap.getOrDefault(melhorCliente,0) < numTransacoes+1) {
+                    melhorCliente = cliente;
+            }
+        }
+
+        return melhorCliente;
     }
 }
