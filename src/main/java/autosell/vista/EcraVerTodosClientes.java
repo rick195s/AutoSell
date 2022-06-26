@@ -20,12 +20,6 @@ public class EcraVerTodosClientes extends JFrame {
 
         initComponentes();
         atualizarTodosClientes();
-
-        lstTodosClientes.addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent evt) {
-               lstMouseClickActionPerformed(evt);
-            }
-        });
     }
 
     public static void mostrarTodosClientes(Frame parent){
@@ -37,7 +31,11 @@ public class EcraVerTodosClientes extends JFrame {
     public void initComponentes(){
         modeloTodosClientes = new DefaultListModel<>();
         lstTodosClientes.setModel(modeloTodosClientes);
-
+        lstTodosClientes.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+                lstMouseClickActionPerformed(evt);
+            }
+        });
     }
 
     public void atualizarTodosClientes(){
@@ -53,7 +51,7 @@ public class EcraVerTodosClientes extends JFrame {
         if (botao == MouseEvent.BUTTON1){
             int clickCount = evt.getClickCount();
             if( clickCount == 2) {
-                Cliente cliente = (Cliente) lstTodosClientes.getSelectedValue();
+                Cliente cliente = lstTodosClientes.getSelectedValue();
                 EcraVerDetalhesCliente.mostrarDetalhesCliente(this, cliente);
             }
         }
