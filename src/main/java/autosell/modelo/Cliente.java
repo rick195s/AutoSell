@@ -5,8 +5,15 @@ public class Cliente {
     private String NIF;
 
     public Cliente(String nome, String NIF) {
+        if (nome == null || nome.trim().length() < 4){
+            throw new IllegalArgumentException("Nome inválido");
+        }
         this.nome = nome;
+        if (NIF == null || NIF.trim().length() != 8){
+            throw new IllegalArgumentException("NIF inválido");
+        }
         this.NIF = NIF;
+
     }
 
     public String getNome() {
