@@ -1,6 +1,7 @@
 package autosell.vista;
 
 import autosell.modelo.Cliente;
+import autosell.modelo.Estatisticas;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,8 +19,18 @@ public class EcraEstatisticas extends JDialog{
         super(parent, "Ecra Criar Cliente", modal);
         setContentPane(panel1);
         pack();
+
+        getEstatisticas();
     }
 
+    private void getEstatisticas() {
+        labelFilialMaisVende.setText(Estatisticas.getFilialMaisVende().getNome());
+        labelFilialMaisProfit.setText(Estatisticas.getFilialMaisProfit().getNome());
+        labelProfitSede.setText(Estatisticas.profitSede()+" €");
+        labelNumCarrosVendidos.setText(Estatisticas.getNumCarrosVendidos()+"");
+        labelNumPneusStock.setText(Estatisticas.getNumPneusStock()+"");
+        labelNumCarrosStock.setText(Estatisticas.getNumCarrosStock() + "");
+    }
 
     public static void mostrarEstatisticas(Frame parent){
         EcraEstatisticas ecraEstatisticas = new EcraEstatisticas(parent, true);

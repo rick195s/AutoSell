@@ -13,6 +13,10 @@ public class Local {
         pecas = new LinkedList<>();
     }
 
+    public String getNome() {
+        return nome;
+    }
+
     public boolean pecaEmStock(String nome){
         for (Peca peca : pecas) {
             if (peca.getNome().equals(nome))
