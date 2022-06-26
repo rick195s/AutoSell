@@ -39,6 +39,7 @@ public class EcraPrincipal extends JFrame{
         btnVerLocaisRegistados.addActionListener(this::btnVerTodosLocaisActionPerformed);
         btnEstatisticas.addActionListener(this::btnEstatisticasActionPerformed);
         btnAdicionarPeca.addActionListener(this::btnAdicionarPecaActionPerformed);
+        btnAdicionarVeiculo.addActionListener(this::btnAdicionarVeiculoActionPerformed);
 
         modeloUltimasTransacoes = new DefaultListModel<>();
         lstUltimasTransacoes.setModel(modeloUltimasTransacoes);
@@ -72,7 +73,6 @@ public class EcraPrincipal extends JFrame{
 
     public void btnVerTodosClientesActionPerformed(ActionEvent evt) {
         EcraVerTodosClientes.mostrarTodosClientes(this);
-
     }
 
     public void btnVerTodosLocaisActionPerformed(ActionEvent evt) {
@@ -85,5 +85,9 @@ public class EcraPrincipal extends JFrame{
 
     public void btnAdicionarPecaActionPerformed(ActionEvent evt) {
         EcraAdicionarPeca.adicionarPeca(this);
+    }
+
+    public void btnAdicionarVeiculoActionPerformed(ActionEvent evt) {
+        EcraAdicionarVeiculo.adicionarVeiculo(this);
     }
 }
