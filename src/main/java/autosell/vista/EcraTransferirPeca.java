@@ -21,7 +21,7 @@ public class EcraTransferirPeca extends JFrame {
 //    private DefaultComboBoxModel<Peca> modalPecas;
     private DefaultComboBoxModel<Local> modalLocaisCBLocalAdicionarPeca;
 
-    public EcraTransferirPeca(Frame parent, boolean modal, Peca peca, Local local) {
+    public EcraTransferirPeca(Frame parent, Peca peca, Local local) {
         setTitle("Transferir Peça");
         setContentPane(panelAdicionarPeca);
         pack();
@@ -30,6 +30,7 @@ public class EcraTransferirPeca extends JFrame {
         cbLocalARetirarPeca.setEnabled(false);
 
         initComponentes(peca, local);
+        atualizarCBLocalAdicionarPeca(local);
     }
 
     public void initComponentes(Peca peca, Local local) {
@@ -37,14 +38,14 @@ public class EcraTransferirPeca extends JFrame {
         cbLocalARetirarPeca.addItem(local);
         cbEscolherPeca.addItem(peca);
         cbLocalAAdionarPeca.setModel(modalLocaisCBLocalAdicionarPeca);
-        atualizarCBLocalAdicionarPeca(local);
+
 
         buttonAdicionarPeca.addActionListener(this::btnAdicionarPecaActionPerformed);
         buttonCancelar.addActionListener(this::btnCancelarActionPerformed);
     }
 
     public static void mostrarTransferirPeca(Frame parent, Peca peca, Local local) {
-        EcraTransferirPeca ecraTransferirPeca = new EcraTransferirPeca(parent, true, peca, local);
+        EcraTransferirPeca ecraTransferirPeca = new EcraTransferirPeca(parent, peca, local);
         ecraTransferirPeca.setLocationRelativeTo(parent);
         ecraTransferirPeca.setVisible(true);
     }
