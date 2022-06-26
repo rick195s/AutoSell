@@ -139,21 +139,12 @@ public class DadosDaAplicacao {
         LinkedList<Peca> pecas = new LinkedList<>();
         for (Local local : getLocais()) {
             for (Peca peca : local.getPecas()) {
-                pecas.add(peca);
-
+                if (!pecas.contains(peca)) {
+                    pecas.add(peca);
+                }
             }
         }
         return pecas;
-    }
-    public LinkedList<Veiculo> getVeiculos() {
-        LinkedList<Veiculo> veiculos = new LinkedList<>();
-        for (Local local : getLocais()) {
-            for (Veiculo veiculo : local.getVeiculos()) {
-                veiculos.add(veiculo);
-
-            }
-        }
-        return veiculos;
     }
 
     public void addCliente(Cliente cliente) {
