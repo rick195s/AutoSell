@@ -10,11 +10,10 @@ import java.awt.*;
 
 public class EcraAdicionarVeiculo extends JFrame{
     private JComboBox<Local> cbLocalARetirarVeiculo;
-    private JComboBox<Veiculo> cbEscolherVeiculo;
-    private JComboBox<Local> cbLocalAAdicionarVeiculo;
     private JButton buttonAdicionarVeiculo;
     private JButton buttonCancelar;
     private JPanel panelAdicionarVeiculo;
+    private JTextField textField1;
 
     private DefaultComboBoxModel<Local> modalLocais;
     private DefaultComboBoxModel<Veiculo> modalVeiculos;
@@ -29,7 +28,7 @@ public class EcraAdicionarVeiculo extends JFrame{
         atualizarTodosLocais();
     }
 
-    public static void adicionarVeiculo(Frame parent) {
+    public static void mostrarAdicionarVeiculo(Frame parent) {
         EcraAdicionarVeiculo ecraAdicionarVeiculo = new EcraAdicionarVeiculo();
         ecraAdicionarVeiculo.setLocationRelativeTo(parent);
         ecraAdicionarVeiculo.setVisible(true);
