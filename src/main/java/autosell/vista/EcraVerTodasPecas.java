@@ -8,6 +8,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class EcraVerTodasPecas extends  JFrame {
     private JPanel panelPecas;
@@ -37,6 +39,12 @@ public class EcraVerTodasPecas extends  JFrame {
                 System.out.println(listTodasPecas.getSelectedValue());
             }
         });
+
+        listLocaisComPeca.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+                listTodosLocaisMouseClickActionPerformed(evt);
+            }
+        });
     }
     public void initComponentes() {
         modeloTodasPecas = new DefaultListModel<>();
@@ -64,6 +72,19 @@ public class EcraVerTodasPecas extends  JFrame {
         EcraVerTodasPecas ecraVerTodasPecas = new EcraVerTodasPecas();
         ecraVerTodasPecas.setLocationRelativeTo(parent);
         ecraVerTodasPecas.setVisible(true);
+    }
+
+    public void listTodosLocaisMouseClickActionPerformed(MouseEvent evt) {
+        int botao = evt.getButton();
+        if (botao == MouseEvent.BUTTON1){
+            int clickCount = evt.getClickCount();
+            if( clickCount == 2) {
+                System.out.println("aquiqui");
+                Peca peca = (Peca) listTodasPecas.getSelectedValue();
+                Local local = (Local) listLocaisComPeca.getSelectedValue();
+                EcraTransferirPeca.transferirPeca(this, peca, local);
+            }
+        }
     }
 }
 

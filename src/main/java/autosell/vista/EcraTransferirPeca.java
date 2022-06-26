@@ -8,7 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
-public class EcraAdicionarPeca extends JFrame {
+public class EcraTransferirPeca extends JFrame {
 
     private JComboBox<Local> cbLocalARetirarPeca;
     private JComboBox<Peca> cbEscolherPeca;
@@ -17,36 +17,37 @@ public class EcraAdicionarPeca extends JFrame {
     private JPanel panelAdicionarPeca;
     private JComboBox<Local> cbLocalAAdionarPeca;
 
-    private DefaultComboBoxModel<Local> modalLocais;
-    private DefaultComboBoxModel<Peca> modalPecas;
+//    private DefaultComboBoxModel<Local> modalLocais;
+//    private DefaultComboBoxModel<Peca> modalPecas;
     private DefaultComboBoxModel<Local> modalLocaisCBLocalAdicionarPeca;
 
-    public EcraAdicionarPeca() {
-        setTitle("Adicionar Peça");
+    public EcraTransferirPeca(Frame parent, boolean modal, Peca peca, Local local) {
+        setTitle("Transferir Peça");
         setContentPane(panelAdicionarPeca);
         pack();
 
-        initComponentes();
-        atualizarTodosLocais();
+        cbEscolherPeca.setEnabled(false);
+        cbLocalARetirarPeca.setEnabled(false);
+
+        initComponentes(peca, local);
+        //atualizarTodosLocais();
     }
 
-    public void initComponentes() {
-        modalLocais = new DefaultComboBoxModel<>();
-        modalPecas = new DefaultComboBoxModel<>();
+    public void initComponentes(Peca peca, Local local) {
         modalLocaisCBLocalAdicionarPeca = new DefaultComboBoxModel<>();
-        cbLocalARetirarPeca.setModel(modalLocais);
-        cbEscolherPeca.setModel(modalPecas);
+        cbLocalARetirarPeca.addItem(local);
+        cbEscolherPeca.addItem(peca);
         cbLocalAAdionarPeca.setModel(modalLocaisCBLocalAdicionarPeca);
+        atualizarCBLocalAdicionarPeca(local);
 
         buttonAdicionarPeca.addActionListener(this::btnAdicionarPecaActionPerformed);
         buttonCancelar.addActionListener(this::btnCancelarActionPerformed);
-        cbLocalARetirarPeca.addActionListener(this::atualizarCBPecaActionPerformed);
     }
 
-    public static void adicionarPeca(Frame parent) {
-        EcraAdicionarPeca ecraAdicionarPeca = new EcraAdicionarPeca();
-        ecraAdicionarPeca.setLocationRelativeTo(parent);
-        ecraAdicionarPeca.setVisible(true);
+    public static void transferirPeca(Frame parent, Peca peca, Local local) {
+        EcraTransferirPeca ecraTransferirPeca = new EcraTransferirPeca(parent, true, peca, local);
+        ecraTransferirPeca.setLocationRelativeTo(parent);
+        ecraTransferirPeca.setVisible(true);
     }
 
     public void btnCancelarActionPerformed(ActionEvent evt) {
@@ -67,30 +68,14 @@ public class EcraAdicionarPeca extends JFrame {
         DadosDaAplicacao.INSTANCE.addPecaA((Local) cbLocalAAdionarPeca.getSelectedItem(), (Peca) cbEscolherPeca.getSelectedItem());
         DadosDaAplicacao.INSTANCE.removePecaA((Local) cbLocalARetirarPeca.getSelectedItem(), (Peca) cbEscolherPeca.getSelectedItem());
         JOptionPane.showMessageDialog(null, "Adicionada peça com sucesso!");
-        modalLocais.removeAllElements();
-        modalPecas.removeAllElements();
-        modalLocaisCBLocalAdicionarPeca.removeAllElements();
-        atualizarTodosLocais();
+        fechar();
     }
 
-    public void atualizarCBPecaActionPerformed(ActionEvent evt) {
-        modalPecas.removeAllElements();
-        Object selectedItem = cbLocalARetirarPeca.getSelectedItem();
-        if (selectedItem instanceof Local) {
-            modalPecas.addAll(((Local) selectedItem).getPecas());
-            atualizarCBLocalAdicionarPeca(selectedItem);
-        }
-    }
 
     public void atualizarCBLocalAdicionarPeca(Object selectedItem) {
         modalLocaisCBLocalAdicionarPeca.removeAllElements();
         modalLocaisCBLocalAdicionarPeca.addAll(DadosDaAplicacao.INSTANCE.getLocais());
         modalLocaisCBLocalAdicionarPeca.removeElement(selectedItem);
-    }
-
-    public void atualizarTodosLocais() {
-        modalLocais.removeAllElements();
-        modalLocais.addAll(DadosDaAplicacao.INSTANCE.getLocais());
     }
 
     private void fechar() {
