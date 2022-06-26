@@ -82,7 +82,7 @@ public class EcraVerTodasPecas extends  JFrame {
                 if (listTodasPecas.getSelectedValue() != null && listLocaisComPeca.getSelectedValue() != null) {
                     Peca peca = (Peca) listTodasPecas.getSelectedValue();
                     Local local = (Local) listLocaisComPeca.getSelectedValue();
-                    EcraTransferirPeca.transferirPeca(this, peca, local);
+                    EcraTransferirPeca.mostrarTransferirPeca(this, peca, local);
                 } else {
                     JOptionPane.showMessageDialog(null, "Selecione primeiro a peça e o local.");
                 }

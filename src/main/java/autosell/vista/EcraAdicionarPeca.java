@@ -7,9 +7,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 
 public class EcraAdicionarPeca extends JFrame{
-    private JComboBox cbTipoPeca;
+    private JComboBox<String> cbTipoPeca;
     private JTextField txtNomePeca;
-    private JComboBox cbLocalAdicionarPeca;
+    private JComboBox<Local> cbLocalAdicionarPeca;
     private JButton btnAdicionarPeca;
     private JButton btnCancelar;
     private JPanel panelAdicionarPeca;
