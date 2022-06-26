@@ -21,8 +21,6 @@ public class Estatisticas {
                 if (hashMap.getOrDefault(filialMaisVende,0) < numTransacoes+1) {
                     filialMaisVende = (Filial) local;
                 }
-
-
             }
         }
 

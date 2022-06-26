@@ -74,7 +74,6 @@ public class EcraPrincipal extends JFrame{
 
     public void btnVerTodosClientesActionPerformed(ActionEvent evt) {
         EcraVerTodosClientes.mostrarTodosClientes(this);
-
     }
 
     public void btnVerTodosLocaisActionPerformed(ActionEvent evt) {

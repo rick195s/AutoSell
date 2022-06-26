@@ -22,7 +22,6 @@ public class AddClienteTeste {
 
         assertEquals("Guilherme" , cliente.getNome());
         assertEquals("434343232", cliente.getNIF());
-
     }
 
 
