@@ -39,7 +39,6 @@ public class EcraAdicionarVeiculo extends JFrame {
     }
 
     public void initComponentes() {
-        // TODO
         modalLocais = new DefaultComboBoxModel<>();
 
         cbLocalAdicionarVeiculo.setModel(modalLocais);
