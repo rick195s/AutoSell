@@ -100,22 +100,10 @@ public class DadosDaAplicacao {
         return transacoesCliente;
     }
 
-    public LinkedList<Veiculo> getVeiculosDe(Local local) {
-        if (local == null) {
-            return null;
-        }
-
-        return new LinkedList<>(local.getVeiculos());
-    }
-
     public LinkedList<Cliente> getClientes() {
         return clientes;
     }
 
-    public LinkedList<Cliente> getCliente(String NIF) {
-        //TODO
-        return null;
-    }
 
     public LinkedList<Local> getLocais() {
         LinkedList<Local> locais = new LinkedList<>(this.locais);
@@ -158,12 +146,6 @@ public class DadosDaAplicacao {
         }
 
         eventos.add(evento);
-    }
-
-    public void addVeiculoA(Local local, Veiculo veiculo) {
-        if (local != null && veiculo != null) {
-            local.addVeiculo(veiculo);
-        }
     }
 
     public void addPecaA(Local local, Peca peca) {

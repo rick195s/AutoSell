@@ -62,11 +62,10 @@ public class EcraAdicionarVeiculo extends JFrame {
         }
         if (cbLocalAdicionarVeiculo != null) {
             System.out.println("entrei");
-            DadosDaAplicacao.INSTANCE.addVeiculoA(((Local) cbLocalAdicionarVeiculo.getSelectedItem()),
-                    new Veiculo(txtNome.getText(),
-                            txtMatricula.getText().toUpperCase(),
-                            txtMarca.getText(),
-                            Double.parseDouble(txtValor.getText())));
+            ((Local) cbLocalAdicionarVeiculo.getSelectedItem()).addVeiculo(new Veiculo(txtNome.getText(),
+                    txtMatricula.getText().toUpperCase(),
+                    txtMarca.getText(),
+                    Double.parseDouble(txtValor.getText())));
             JOptionPane.showMessageDialog(null, "Veiculo adicionado com sucesso!");
             fechar();
         }
