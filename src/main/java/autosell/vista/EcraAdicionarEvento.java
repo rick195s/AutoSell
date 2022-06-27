@@ -57,6 +57,19 @@ public class EcraAdicionarEvento extends JDialog {
         }
     }
 
+    public void atualizarTodosLocais() {
+        modelLocais.removeAllElements();
+        modelLocais.addAll(DadosDaAplicacao.INSTANCE.getLocais());
+    }
+
+
+    public void atualizarLocais(){
+        modelLocais.removeAllElements();
+        for (Local local : DadosDaAplicacao.INSTANCE.getLocais()) {
+            modelLocais.addElement(local);
+        }
+    }
+
     public static void mostrarCriacaoEvento(Frame parent){
         EcraAdicionarEvento ecraAdicionarEvento = new EcraAdicionarEvento();
         ecraAdicionarEvento.setLocationRelativeTo(parent);
@@ -96,6 +109,7 @@ public class EcraAdicionarEvento extends JDialog {
 
         try {
             evento = new Evento((Local) comboLocal.getSelectedItem(),textFieldNomeEvento.getText(),Data.parseData(textFieldDataInicio.getText()),Data.parseData(textFieldDataFim.getText()));
+            DadosDaAplicacao.INSTANCE.addEvento(evento);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,e.getMessage());
         }
@@ -103,42 +117,10 @@ public class EcraAdicionarEvento extends JDialog {
 
     }
 
-
-
-    public void atualizarTodosLocais() {
-        modelLocais.removeAllElements();
-        modelLocais.addAll(DadosDaAplicacao.INSTANCE.getLocais());
-    }
-
-
-    public void atualizarLocais(){
-        modelLocais.removeAllElements();
-        for (Local local : DadosDaAplicacao.INSTANCE.getLocais()) {
-            modelLocais.addElement(local);
-        }
-    }
-
-    public void atualizarVeiculos(Local local){
-        modelVeiculos.removeAllElements();
-        for (Veiculo veiculo : local.getVeiculos()) {
-            modelVeiculos.addElement(veiculo);
-        }
-    }
-
     public void btnCancelarActionPerformed(ActionEvent evt) {
         dispose();
     }
 
-    public void atualizarListaVeiculosDisponiveisPorLocal() {
-        modelVeiculos.removeAllElements();
-
-        Local localSelecionado = (Local) comboLocal.getSelectedItem();
-        if(localSelecionado!=null) {
-            for (Veiculo veiculo : localSelecionado.getVeiculos()) {
-                modelVeiculos.addElement(veiculo);
-            }
-        }
-    }
 
     public void lstMouseClickActionPerformed(MouseEvent evt){
         int botao = evt.getButton();

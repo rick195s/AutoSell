@@ -15,8 +15,6 @@ public class TransferPecaTeste {
         Oleo oleo = new Oleo("WD405");
         filial.addPeca(oleo);
 
-        DadosDaAplicacao.INSTANCE.addFilial(filial);
-        DadosDaAplicacao.INSTANCE.addFilial(filial2);
         DadosDaAplicacao.INSTANCE.addPecaA(filial2, oleo);
         DadosDaAplicacao.INSTANCE.removePecaA(filial, oleo);
 
@@ -36,9 +34,6 @@ public class TransferPecaTeste {
 
         Oleo oleo = new Oleo("WD405");
         filial.addPeca(oleo);
-
-        DadosDaAplicacao.INSTANCE.addFilial(filial);
-        DadosDaAplicacao.INSTANCE.addFilial(filial2);
         DadosDaAplicacao.INSTANCE.addPecaA(filial2, oleo);
         DadosDaAplicacao.INSTANCE.removePecaA(filial, oleo);
 
