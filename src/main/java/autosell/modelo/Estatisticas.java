@@ -2,6 +2,7 @@ package autosell.modelo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 
 public class Estatisticas {
 
@@ -97,7 +98,13 @@ public class Estatisticas {
 
         HashMap<Cliente, Integer> hashMap = new HashMap<>();
 
-        Cliente melhorCliente = DadosDaAplicacao.INSTANCE.getClientes().getFirst();
+        LinkedList<Cliente> clientes = DadosDaAplicacao.INSTANCE.getClientes();
+
+        if (clientes == null) {
+            return null;
+        }
+
+        Cliente melhorCliente = clientes.getFirst();
 
         for (Transacao transacao : DadosDaAplicacao.INSTANCE.getTransacoes()) {
             Cliente cliente = transacao.getCliente();
