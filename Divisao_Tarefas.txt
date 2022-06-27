@@ -1,0 +1,123 @@
+Divisão de casos de uso: 
+
+Ricardo Franco: 
+
+14. Ver estatísticas (Filial que mais vende, filial com mais profit, carro mais vendido, número de carros vendidos);  
+
+8. Registar Transação sem retoma; 
+
+9. Criar Cliente; 
+
+6. Ver Detalhes de Cliente; 
+
+5. Ver Todos os Clientes Registados; 
+
+ 
+
+Ricardo Casal: 
+
+1: Ver locais onde a peça está em stock; 
+
+2: Ver todas as peças registadas; 
+
+3: Ver todos os veículos registados num local; 
+
+10: Adicionar Local de Evento; 
+
+11: Adicionar Evento; 
+
+ 
+
+Wilson Nuno: 
+
+4. Fazer pedido entre locais registados com uma peça em stock; 
+
+7. Ver Todos os Locais Registados (filiais, sedes, locais de eventos); 
+
+12. Adicionar Veículo a um Local; 
+
+13. Adicionar Peça a um Local; 
+
+Testes Unitários:--------------------------------------------------------------------------------------- 
+
+
+Ricardo Franco: 
+
+	AddClienteTeste; 
+
+	AddTransacaoTeste; 
+
+	GetTransacoesCliente; 
+
+	EstatisticasTestes; 
+
+ 
+
+Ricardo Casal: 
+
+	TesteEventoAdicionado; 
+
+	TesteAddPneu; 
+
+	TesteAddOleo; 
+
+	TesteAddNovoLocal; 
+
+	TesteGetEventos; 
+
+Nuno Gaspar
+	
+	TesteAdicionarVeiculo;
+
+	TesteMatriculaInvalida;
+
+	TesteMatriculaValida
+
+	TesteTransferirPeca;
+
+	TesteInformacaoPeca;
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+Ecrãs:--------------------------------------------------------------------------------------------------------
+
+
+Ricardo Franco: 
+
+	EcraPrincipal; 
+
+	EcraRegistarTransacao; 
+
+	EcraVerDetalhesCliente; 
+
+	EcraVerTodosClientes; 
+
+	EcraCriarCliente; 
+
+	EcraEstatisticas; 
+
+ 
+
+Nuno Gaspar: 
+
+	EcraVerTodosLocais; 
+
+	EcraVerVeiculosDeLocal; 
+
+	EcraAdicionarPeca; 
+
+Ricardo Casal 
+
+	EcraVerTodasPecas; 
+
+	EcraAdicionarEvento; 
+
+	EcraCriarLocal; 
