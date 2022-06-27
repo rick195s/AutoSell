@@ -111,6 +111,7 @@ public class DadosDaAplicacao {
 
     public LinkedList<Local> getLocais() {
         LinkedList<Local> locais = new LinkedList<>(this.locais);
+        locais.add(getSede());
         return locais;
     }
 
