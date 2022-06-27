@@ -28,18 +28,6 @@ public class EcraVerTodosLocais extends JFrame{
 
         initComponentes();
         atualizarTodosLocais();
-
-        buttonFiltrarVeiculosLocal.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (listTodosLocais.getSelectedValue()==null){
-                    JOptionPane.showMessageDialog(null,"Deve Selecionar um local para consultar");
-                }else
-                    atualizarListaVeiculosFiltradaPorLocal();
-
-                System.out.println(listTodosLocais.getSelectedValue());
-            }
-        });
     }
 
     public static void mostrarTodosLocais(Frame parent) {
@@ -53,6 +41,14 @@ public class EcraVerTodosLocais extends JFrame{
         modeloVeiculosFiltrados = new DefaultListModel<>();
         listTodosLocais.setModel(modeloTodosLocais);
         listVeiculosFiltradosPorLocal.setModel(modeloVeiculosFiltrados);
+        buttonFiltrarVeiculosLocal.addActionListener(this::btnFiltrarPorLocal);
+    }
+
+    private void btnFiltrarPorLocal(ActionEvent evt) {
+        if (listTodosLocais.getSelectedValue()==null){
+            JOptionPane.showMessageDialog(null,"Deve Selecionar um local para consultar");
+        }else
+            atualizarListaVeiculosFiltradaPorLocal();
     }
 
     public void atualizarTodosLocais() {
@@ -70,4 +66,6 @@ public class EcraVerTodosLocais extends JFrame{
             modeloVeiculosFiltrados.addElement(veiculo);
         }
     }
+
+
 }

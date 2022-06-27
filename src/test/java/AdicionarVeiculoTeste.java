@@ -16,7 +16,6 @@ public class AdicionarVeiculoTeste {
         Veiculo veiculo = new Veiculo("M4", "23-XX-24", "BMW", 40000);
         Filial filial = new Filial("Filial Teste");
         filial.addVeiculo(veiculo);
-        DadosDaAplicacao.INSTANCE.addFilial(filial);
 
 
         LinkedList<Local> locais = DadosDaAplicacao.INSTANCE.getLocais();

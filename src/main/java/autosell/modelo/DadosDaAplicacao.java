@@ -13,6 +13,8 @@ public class DadosDaAplicacao {
     private LinkedList<Evento> eventos;
     private LinkedList<Local> locais;
 
+
+
     private DadosDaAplicacao() {
         transacoes = new LinkedList<>();
         clientes = new LinkedList<>();
@@ -72,7 +74,9 @@ public class DadosDaAplicacao {
     public LinkedList<Transacao> getTransacoes() {
         return transacoes;
     }
-
+    public LinkedList<Evento> getEventos() {
+        return eventos;
+    }
     public LinkedList<Transacao> getTransacoes(int numTransacoes) {
 
         ListIterator<Transacao> transacaoListIterator = transacoes.listIterator();

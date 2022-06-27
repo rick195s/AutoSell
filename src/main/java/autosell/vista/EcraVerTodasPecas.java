@@ -28,17 +28,6 @@ public class EcraVerTodasPecas extends  JFrame {
         atualizarTodasPecas();
 
 
-        buttonVerPecasNosLocais.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (listTodasPecas.getSelectedValue() == null) {
-                    JOptionPane.showMessageDialog(null, "Deve Selecionar uma peça para consultar");
-                } else
-                    atualizarLocaisFiltradosPorPeca();
-                System.out.println(listTodasPecas.getSelectedValue());
-            }
-        });
-
         listLocaisComPeca.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
                 listTodosLocaisMouseClickActionPerformed(evt);
